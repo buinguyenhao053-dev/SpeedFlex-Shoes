@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAO SHOES - Đăng Ký</title>
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/validate.js"></script>
+    <style>
+        /* FORM LOGIN */
+        .section-register {
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dangnhap {
+            margin: auto;
+            width: 420px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <div>Miễn phí vận chuyển toàn quốc</div>
+        <div>
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
+        </div>
+    </div>
+
+    <header>
+
+        <a href="index.html" class="logo">HAO SHOES</a>
+
+    </header>
+    <!-- SECTION RESGIS -->
+    <section class="section-register">
+
+        <form class="dangnhap">
+
+            <h2 class="text-center fw-bold">Resgister / Đăng ký</h2>
+            <p class="text-center mb-4">Tạo tài khoản mới</p>
+
+            <div class="mb-3">
+                <input type="text" class="form-control input-custom" id="hoten" placeholder="Họ và tên">
+                <small id="errten" class="form-text text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <input type="email" class="form-control input-custom" id="mailsdt" placeholder="Email hoặc số điện thoại">
+                <small id="errmailsdt" class="form-text text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <input type="password" class="form-control input-custom" id="password" placeholder="Mật khẩu">
+                <small id="errpassword" class="form-text text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <input type="password" class="form-control input-custom" id="confirm" placeholder="Nhập lại mật khẩu">
+                <small id="errconfirm" class="form-text text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <label for="radio">Giới tính: </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gioitinh" id="" value="nam" />
+                    <label class="form-check-label" for="">Nam</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gioitinh" id="" value="nu" />
+                    <label class="form-check-label" for="">Nữ</label>
+                </div>
+
+                <small id="errrad" class="form-text text-danger"></small>
+            </div>
+            <div class="mb-3">
+                <div class="d-flex ">
+                    <label for="birth">Ngày sinh: </label>
+                    <input type="date" class="form-control w-75" name="" id="birth" />
+                </div>
+                <small id="errbirth" class="form-text text-danger"></small>
+            </div>
+            <div class="d-grid mb-3">
+                <button class="btn btn-dark" id="btnRegister" disabled>Đăng ký</button>
+            </div>
+
+            <div class="text-center text-muted">Đã có tài khoản. <a href="../html/login.html" style="text-decoration: none;">Đăng nhập.</a></div>
+        </form>
+
+    </section>
+
+
+    <footer>
+
+        <div class="footer-grid">
+            <div>
+                <h4>Thông tin shop</h4>
+                <p>Địa chỉ: TP.HCM</p>
+                <p>SĐT: 0909999999</p>
+                <p>Email: haoshoes@gmail.com</p>
+            </div>
+
+            <div>
+                <h4>Chính sách khách hàng</h4>
+                <p>Hướng dẫn đặt hàng</p>
+                <p>Bảo hành</p>
+                <p>Đổi hàng</p>
+                <p>Thanh toán</p>
+            </div>
+
+            <div>
+                <h4>Giới thiệu</h4>
+                <p>Thành lập 2026</p>
+                <p>Shop giày thời trang</p>
+            </div>
+        </div>
+        <p class="copy">© 2026 HAO SHOES STORE</p>
+    </footer>
+</body>
+
+</html>
