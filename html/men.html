@@ -917,9 +917,9 @@
                 class="price-range"
                 type="range"
                 min="1500000"
-                max="4200000"
+                max="10000000"
                 step="100000"
-                value="4200000"
+                value="10000000"
               />
               <div class="price-label" id="priceLabel">Dưới 4.200.000đ</div>
             </div>
@@ -1018,155 +1018,132 @@
       const products = [
         {
           id: "n1",
-          name: "Nike Air Force 1 '07",
+          name: "Nike Air Max 95 Big Bubble",
           category: "Lifestyle",
-          price: 2900000,
-          oldPrice: 3200000,
+          price: 4999000,
+          oldPrice: 0,
           rating: 4.8,
-          tag: "Best seller",
+          tag: "Hot",
           season: 2026,
-          image: "../img/giayNam_01.jpg",
-          desc: "Mẫu sneaker huyền thoại với thiết kế tối giản, dễ phối đồ.",
+          image: "../img/W+NIKE+AIR+MAX+95+BIG+BUBBLE.jpg",
+          desc: "Thiết kế cổ điển với công nghệ Air nổi bật, mang lại cảm giác êm ái.",
           sizes: [39, 40, 41, 42, 43],
         },
         {
           id: "n2",
-          name: "Nike Air Max 270",
-          category: "Running",
-          price: 3500000,
-          oldPrice: 3900000,
-          rating: 4.7,
-          tag: "Popular",
+          name: "Nike Air Force 1 '07",
+          category: "Lifestyle",
+          price: 3239000,
+          oldPrice: 0,
+          rating: 4.9,
+          tag: "Best seller",
           season: 2026,
-          image:
-            "../img/giayNam_02.jpg",
-          desc: "Đệm Air lớn ở gót mang lại cảm giác êm ái suốt ngày dài.",
-          sizes: [40, 41, 42, 43, 44],
+          image: "../img/AIR+FORCE+1+'07.jpg",
+          desc: "Mẫu giày huyền thoại với thiết kế đơn giản, dễ phối đồ.",
+          sizes: [38, 39, 40, 41, 42, 43],
         },
         {
           id: "n3",
-          name: "Nike Revolution 6",
-          category: "Running",
-          price: 1800000,
-          oldPrice: 2100000,
-          rating: 4.5,
-          tag: "Budget",
-          season: 2025,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/revolution-6-next-nature-running-shoes.png",
-          desc: "Giày chạy nhẹ, phù hợp người mới bắt đầu.",
-          sizes: [39, 40, 41, 42, 43],
+          name: "Nike ACG Pegasus Trail",
+          category: "Outdoor",
+          price: 4109000,
+          oldPrice: 0,
+          rating: 4.7,
+          tag: "Trail",
+          season: 2026,
+          image: "../img/NIKE+ACG+PEGASUS+TRAIL.jpg",
+          desc: "Thiết kế chuyên dụng cho địa hình, đế bám tốt và chống trượt.",
+          sizes: [40, 41, 42, 43, 44],
         },
         {
           id: "n4",
-          name: "Nike Air Jordan 1 Low",
-          category: "Lifestyle",
-          price: 3200000,
-          oldPrice: 3500000,
+          name: "Air Jordan 1 Mid SE",
+          category: "Basketball",
+          price: 3959000,
+          oldPrice: 0,
           rating: 4.9,
-          tag: "Hot",
+          tag: "Classic",
           season: 2026,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/air-jordan-1-low-shoes.png",
-          desc: "Phiên bản thấp của Jordan 1, phong cách streetwear.",
-          sizes: [40, 41, 42, 43],
+          image: "../img/AIR+JORDAN+1+MID+SE.jpg",
+          desc: "Phong cách bóng rổ cổ điển, biểu tượng của Jordan.",
+          sizes: [39, 40, 41, 42, 43],
         },
         {
           id: "n5",
-          name: "Nike Pegasus 40",
-          category: "Running",
-          price: 3600000,
-          oldPrice: 3900000,
-          rating: 4.8,
-          tag: "Runner",
+          name: "Jordan Spizike G",
+          category: "Lifestyle",
+          price: 5589000,
+          oldPrice: 0,
+          rating: 4.6,
+          tag: "Premium",
           season: 2026,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/pegasus-40-road-running-shoes.png",
-          desc: "Dòng chạy bộ nổi tiếng với độ ổn định cao.",
+          image: "../img/JORDAN+SPIZIKE+G.jpg",
+          desc: "Thiết kế kết hợp nhiều dòng Jordan, tạo điểm nhấn độc đáo.",
           sizes: [40, 41, 42, 43, 44],
         },
         {
           id: "n6",
-          name: "Nike Blazer Mid '77",
+          name: "Jordan Sixty Plus Low",
           category: "Lifestyle",
-          price: 2700000,
-          oldPrice: 3000000,
+          price: 4849000,
+          oldPrice: 0,
           rating: 4.6,
-          tag: "Classic",
+          tag: "Retro",
           season: 2025,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/blazer-mid-77-vintage-shoes.png",
-          desc: "Thiết kế cổ cao cổ điển mang phong cách retro.",
-          sizes: [39, 40, 41, 42],
+          image: "../img/JORDAN+SIXTY+PLUS+LOW.jpg",
+          desc: "Lấy cảm hứng từ các cột mốc 60 điểm của Michael Jordan.",
+          sizes: [40, 41, 42, 43],
         },
         {
           id: "n7",
-          name: "Nike Dunk Low",
-          category: "Lifestyle",
-          price: 3100000,
-          oldPrice: 3400000,
+          name: "Nike Pegasus 42",
+          category: "Running",
+          price: 3829000,
+          oldPrice: 0,
           rating: 4.8,
-          tag: "Trending",
+          tag: "Running",
           season: 2026,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/dunk-low-shoes.png",
-          desc: "Mẫu giày cực hot trong giới trẻ.",
+          image: "../img/AIR+ZOOM+PEGASUS+42.jpg",
+          desc: "Giày chạy nhẹ, đệm tốt, phù hợp luyện tập hằng ngày.",
           sizes: [39, 40, 41, 42, 43],
         },
         {
           id: "n8",
-          name: "Nike Metcon 9",
-          category: "Training",
-          price: 3800000,
-          oldPrice: 4100000,
+          name: "Nike Dunk Low Retro SE",
+          category: "Lifestyle",
+          price: 3519000,
+          oldPrice: 0,
           rating: 4.7,
-          tag: "Gym",
+          tag: "Street",
           season: 2026,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/metcon-9-training-shoes.png",
-          desc: "Giày tập gym ổn định, hỗ trợ lực tốt.",
-          sizes: [40, 41, 42, 43, 44],
+          image: "../img/NIKE+DUNK+LOW+RETRO+SE.jpg",
+          desc: "Phong cách streetwear trẻ trung, dễ phối outfit.",
+          sizes: [39, 40, 41, 42],
         },
         {
           id: "n9",
-          name: "Nike ZoomX Vaporfly Next%",
+          name: "Nike Shox Ride 2",
           category: "Running",
-          price: 6000000,
-          oldPrice: 6500000,
-          rating: 4.9,
-          tag: "Pro",
-          season: 2026,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/zoomx-vaporfly-next-shoes.png",
-          desc: "Giày chạy hiệu năng cao dành cho runner chuyên nghiệp.",
+          price: 4999000,
+          oldPrice: 0,
+          rating: 4.7,
+          tag: "Tech",
+          season: 2025,
+          image: "../img/NIKE+SHOX+RIDE+2.jpg",
+          desc: "Công nghệ Shox độc đáo giúp hấp thụ lực và tăng độ nảy.",
           sizes: [40, 41, 42, 43],
         },
         {
           id: "n10",
-          name: "Nike Air Max 90",
-          category: "Lifestyle",
-          price: 3200000,
-          oldPrice: 3500000,
-          rating: 4.8,
-          tag: "Classic",
-          season: 2025,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/air-max-90-shoes.png",
-          desc: "Thiết kế Air Max cổ điển, cực kỳ bền.",
-          sizes: [39, 40, 41, 42, 43],
-        },
-        {
-          id: "n11",
-          name: "Nike Downshifter 12",
+          name: "Nike Zoom Vomero 5 SE",
           category: "Running",
-          price: 1900000,
-          oldPrice: 2200000,
-          rating: 4.5,
-          tag: "Value",
-          season: 2025,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/downshifter-12-running-shoes.png",
-          desc: "Giày chạy giá tốt, nhẹ và thoáng.",
+          price: 4999999,
+          oldPrice: 0,
+          rating: 4.9,
+          tag: "Premium",
+          season: 2026,
+          image: "../img/NIKE+ZOOM+VOMERO+5+SE.jpg",
+          desc: "Đệm Zoom cao cấp, mang lại trải nghiệm chạy êm ái tối đa.",
           sizes: [39, 40, 41, 42, 43],
         },
         {
@@ -1189,7 +1166,7 @@
         query: "",
         category: "all",
         size: "all",
-        price: 4200000,
+        price: Infinity,
         sort: "featured",
         wishlist: JSON.parse(localStorage.getItem("wishlist")) || [],
       };
@@ -1293,9 +1270,11 @@
 
       function createShoeArt(product) {
         return `
-    <div class="img-wrap">
-      <img src="${product.image}" alt="${product.name}" class="product-img"/>
-    </div>
+    <img 
+      src="${product.image}" 
+      alt="${product.name}" 
+      style="width:100%; height:100%; object-fit:contain;"
+    >
   `;
       }
 
@@ -1333,7 +1312,7 @@
                                     <span class="product-price">${formatCurrency(product.price)}</span>
                                     ${product.oldPrice ? `<span class="old-price">${formatCurrency(product.oldPrice)}</span>` : ""}
                                 </div>
-                                <button class="add-btn" type="button" data-id="${product.id}">Thêm giỏ</button>
+                                <a href="detail.html?id=${product.id}" class="add-btn">Xem chi tiết</a>
                             </div>
                         </div>
                     </article>
