@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .size-btn {
+        border: 1px solid #ccc;
+        padding: 8px 14px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+
+      .size-btn.active {
+        background: black;
+        color: white;
+      }
+
+      .qty-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .qty-box button {
+        width: 35px;
+        height: 35px;
+        border: none;
+        background: black;
+        color: white;
+        font-size: 18px;
+      }
+
+      .qty-box input {
+        width: 60px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div>Miễn phí vận chuyển toàn quốc</div>
+      <div>
+        <a href="login.html">Đăng nhập</a>
+        <a href="register.html">Đăng ký</a>
+      </div>
+    </div>
+
+    <header>
+      <a href="index.html" class="logo">HAO SHOES</a>
+    </header>
+
+    <div class="container mt-5">
+      <div class="row">
+        <!-- ẢNH -->
+        <div class="col-md-6">
+          <img id="img" src="" class="img-fluid" />
+        </div>
+
+        <div class="col-md-6">
+          <h2 id="name"></h2>
+          <h4 id="price" class="text-danger"></h4>
+          <p id="desc"></p>
+
+          <h5>Chọn size:</h5>
+          <div id="sizes"></div>
+
+          <br />
+
+          <!-- SỐ LƯỢNG -->
+          <h5>Số lượng:</h5>
+          <div class="qty-box mb-3">
+            <button onclick="changeQty(-1)">-</button>
+            <input type="number" id="qty" value="1" min="1" />
+            <button onclick="changeQty(1)">+</button>
+          </div>
+
+          <button class="btn btn-dark" id="addCart">Thêm vào giỏ</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h3>Mô tả sản phẩm</h3>
+      <p id="detailDesc"></p>
+    </div>
+
+    <footer class="mt-5">
+      <div class="footer-grid">
+        <div>
+          <h4>Thông tin shop</h4>
+          <p>Địa chỉ: TP.HCM</p>
+          <p>SĐT: 0909999999</p>
+          <p>Email: haoshoes@gmail.com</p>
+        </div>
+
+        <div>
+          <h4>Chính sách khách hàng</h4>
+          <p>Hướng dẫn đặt hàng</p>
+          <p>Bảo hành</p>
+          <p>Đổi hàng</p>
+          <p>Thanh toán</p>
+        </div>
+
+        <div>
+          <h4>Giới thiệu</h4>
+          <p>Thành lập 2026</p>
+          <p>Shop giày thời trang</p>
+        </div>
+      </div>
+      <p class="copy">© 2026 HAO SHOES STORE</p>
+    </footer>
+
+    <script>
+      let params = new URLSearchParams(window.location.search);
+      let id = params.get("id");
+
+      let selectedSize = null;
+
+      let products = {
+        shoe1: {
+          name: "Nike Free Metcon 7",
+          price: "2.490.000₫",
+          img: "../img/shoe1.png",
+          desc: "Giày tập gym nhẹ",
+          detail: "Thiết kế thoáng khí, đế êm, phù hợp tập gym và chạy bộ.",
+          sizes: [39, 40, 41, 42],
+        },
+        shoe2: {
+          name: "Nike Free Metcon 7",
+          price: "2.890.000₫",
+          img: "../img/shoe2.png",
+          desc: "Phiên bản nâng cấp",
+          detail: "Đệm êm hơn, hỗ trợ chân tốt hơn khi vận động.",
+          sizes: [39, 40, 41],
+        },
+        shoe3: {
+          name: "Nike Structure Plus",
+          price: "3.990.000₫",
+          img: "../img/shoe3.png",
+          desc: "Giày chạy cao cấp",
+          detail: "Thiết kế dành cho runner chuyên nghiệp.",
+          sizes: [40, 41, 42, 43],
+        },
+        shoe4: {
+          name: "Nike Structure 26",
+          price: "3.190.000₫",
+          img: "../img/shoe4.png",
+          desc: "Giày chạy ổn định",
+          detail: "Phù hợp chạy hằng ngày.",
+          sizes: [39, 40, 41],
+        },
+        shoe5: {
+          name: "Nike Free Metcon 7 SE",
+          price: "2.290.000₫",
+          img: "../img/shoe5.png",
+          desc: "Thiết kế nữ",
+          detail: "Form đẹp, nhẹ, dễ phối đồ.",
+          sizes: [36, 37, 38],
+        },
+        shoe6: {
+          name: "Nike Free Metcon 7",
+          price: "2.590.000₫",
+          img: "../img/shoe6.png",
+          desc: "Form gọn",
+          detail: "Phong cách đơn giản, hiện đại.",
+          sizes: [38, 39, 40],
+        },
+        shoe7: {
+          name: "Air Jordan 1 Low",
+          price: "2.790.000₫",
+          img: "../img/shoe7.png",
+          desc: "Streetwear",
+          detail: "Phong cách trẻ trung, cá tính.",
+          sizes: [39, 40, 41],
+        },
+        shoe8: {
+          name: "Air Jordan 1 Triple Stack",
+          price: "2.990.000₫",
+          img: "../img/shoe8.png",
+          desc: "Đế cao",
+          detail: "Tôn dáng, cực thời trang.",
+          sizes: [39, 40, 41, 42],
+        },
+      };
+
+      if (products[id]) {
+        let p = products[id];
+
+        document.getElementById("name").innerText = p.name;
+        document.getElementById("price").innerText = p.price;
+        document.getElementById("img").src = p.img;
+        document.getElementById("desc").innerText = p.desc;
+        document.getElementById("detailDesc").innerText = p.detail;
+
+        let sizeHTML = "";
+        p.sizes.forEach((size) => {
+          sizeHTML += `<span class="size-btn" onclick="selectSize(this, ${size})">${size}</span>`;
+        });
+
+        document.getElementById("sizes").innerHTML = sizeHTML;
+      }
+
+      function selectSize(el, size) {
+        document
+          .querySelectorAll(".size-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        el.classList.add("active");
+        selectedSize = size;
+      }
+
+      function changeQty(num) {
+        let qty = document.getElementById("qty");
+        let value = parseInt(qty.value) + num;
+        if (value < 1) value = 1;
+        qty.value = value;
+      }
+
+      document.getElementById("addCart").onclick = function () {
+        if (!selectedSize) {
+          alert("Vui lòng chọn size!");
+          return;
+        }
+
+        let quantity = parseInt(document.getElementById("qty").value);
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        cart.push({
+          ...products[id],
+          size: selectedSize,
+          qty: quantity,
+        });
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        alert("Đã thêm vào giỏ!");
+      };
+    </script>
+  </body>
+</html>

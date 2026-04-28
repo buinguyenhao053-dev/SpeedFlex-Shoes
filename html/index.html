@@ -8,15 +8,17 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="../css/style.css">
+<script src="../js/jquery-4.0.0.min.js"></script>
 </head>
 
 <body>
 
     <div class="topbar">
         <div>Miễn phí vận chuyển toàn quốc</div>
-            <div>
-                <a href="login.html">Đăng nhập</a>
-                <a href="register.html">Đăng ký</a>
+
+        <div id="auth-links">
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
         </div>
     </div>
 
@@ -60,7 +62,7 @@
                 <img src="../img/shoe1.png">
                 <h3>Nike Free Metcon 7</h3>
                 <p>2.490.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
+                <a href="./html/detail.html" class="my-btn">Mua</a>
             </div>
 
             <div class="card">
@@ -156,5 +158,28 @@
     </div>
     <p class="copy">© 2026 HAO SHOES STORE</p>
     </footer>
+<script>
+        $(document).ready(function() {
+            // Kiểm tra trạng thái đăng nhập
+            let isLogin = localStorage.getItem("isLogin");
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            if (isLogin === "true" && currentUser) {
+                $("#auth-links").html(`
+                    <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
+                    <a href="#" id="btnLogout">Đăng xuất</a>
+                `);
+            }
+
+            // Xử lý đăng xuất
+            $(document).on("click", "#btnLogout", function(e) {
+                e.preventDefault();
+                localStorage.removeItem("isLogin");
+                localStorage.removeItem("currentUser");
+                alert("Đã đăng xuất!");
+                location.reload();
+            });
+        });
+</script>   
 </body>
 </html>
