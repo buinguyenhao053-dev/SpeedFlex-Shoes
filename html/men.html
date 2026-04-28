@@ -735,8 +735,6 @@
         <a href="men.html">Nam</a>
         <a href="women.html">Nữ</a>
         <a href="sale.html">Đang Sale</a>
-
-        
       </nav>
 
       <div class="icons">
@@ -873,9 +871,9 @@
                 class="price-range"
                 type="range"
                 min="1500000"
-                max="4200000"
+                max="10000000"
                 step="100000"
-                value="4200000"
+                value="10000000"
               />
               <div class="price-label" id="priceLabel">Dưới 4.200.000đ</div>
             </div>
@@ -973,87 +971,133 @@
     <script>
       const products = [
         {
-          id: "m1",
-          name: "Kinetic AirFlex Runner",
-          category: "Running",
-          price: 2890000,
-          oldPrice: 3290000,
-          rating: 4.9,
-          tag: "Best seller",
+          id: "n1",
+          name: "Nike Air Max 95 Big Bubble",
+          category: "Lifestyle",
+          price: 4999000,
+          oldPrice: 0,
+          rating: 4.8,
+          tag: "Hot",
           season: 2026,
-          colorA: "#232323",
-          colorB: "#8a8a8a",
-          desc: "Mẫu chạy nhẹ với upper knit ôm chân, thoáng khí và đệm phản hồi tốt.",
+          image: "../img/W+NIKE+AIR+MAX+95+BIG+BUBBLE.jpg",
+          desc: "Thiết kế cổ điển với công nghệ Air nổi bật, mang lại cảm giác êm ái.",
           sizes: [39, 40, 41, 42, 43],
         },
         {
-          id: "m2",
-          name: "Kinetic StreetForm Low",
+          id: "n2",
+          name: "Nike Air Force 1 '07",
           category: "Lifestyle",
-          price: 2450000,
+          price: 3239000,
+          oldPrice: 0,
+          rating: 4.9,
+          tag: "Best seller",
+          season: 2026,
+          image: "../img/AIR+FORCE+1+'07.jpg",
+          desc: "Mẫu giày huyền thoại với thiết kế đơn giản, dễ phối đồ.",
+          sizes: [38, 39, 40, 41, 42, 43],
+        },
+        {
+          id: "n3",
+          name: "Nike ACG Pegasus Trail",
+          category: "Outdoor",
+          price: 4109000,
           oldPrice: 0,
           rating: 4.7,
-          tag: "New",
+          tag: "Trail",
           season: 2026,
-          colorA: "#111111",
-          colorB: "#d8cfc2",
-          desc: "Silhouette thấp, gọn và trung tính cho outfit streetwear hằng ngày.",
+          image: "../img/NIKE+ACG+PEGASUS+TRAIL.jpg",
+          desc: "Thiết kế chuyên dụng cho địa hình, đế bám tốt và chống trượt.",
+          sizes: [40, 41, 42, 43, 44],
+        },
+        {
+          id: "n4",
+          name: "Air Jordan 1 Mid SE",
+          category: "Basketball",
+          price: 3959000,
+          oldPrice: 0,
+          rating: 4.9,
+          tag: "Classic",
+          season: 2026,
+          image: "../img/AIR+JORDAN+1+MID+SE.jpg",
+          desc: "Phong cách bóng rổ cổ điển, biểu tượng của Jordan.",
+          sizes: [39, 40, 41, 42, 43],
+        },
+        {
+          id: "n5",
+          name: "Jordan Spizike G",
+          category: "Lifestyle",
+          price: 5589000,
+          oldPrice: 0,
+          rating: 4.6,
+          tag: "Premium",
+          season: 2026,
+          image: "../img/JORDAN+SPIZIKE+G.jpg",
+          desc: "Thiết kế kết hợp nhiều dòng Jordan, tạo điểm nhấn độc đáo.",
+          sizes: [40, 41, 42, 43, 44],
+        },
+        {
+          id: "n6",
+          name: "Jordan Sixty Plus Low",
+          category: "Lifestyle",
+          price: 4849000,
+          oldPrice: 0,
+          rating: 4.6,
+          tag: "Retro",
+          season: 2025,
+          image: "../img/JORDAN+SIXTY+PLUS+LOW.jpg",
+          desc: "Lấy cảm hứng từ các cột mốc 60 điểm của Michael Jordan.",
+          sizes: [40, 41, 42, 43],
+        },
+        {
+          id: "n7",
+          name: "Nike Pegasus 42",
+          category: "Running",
+          price: 3829000,
+          oldPrice: 0,
+          rating: 4.8,
+          tag: "Running",
+          season: 2026,
+          image: "../img/AIR+ZOOM+PEGASUS+42.jpg",
+          desc: "Giày chạy nhẹ, đệm tốt, phù hợp luyện tập hằng ngày.",
+          sizes: [39, 40, 41, 42, 43],
+        },
+        {
+          id: "n8",
+          name: "Nike Dunk Low Retro SE",
+          category: "Lifestyle",
+          price: 3519000,
+          oldPrice: 0,
+          rating: 4.7,
+          tag: "Street",
+          season: 2026,
+          image: "../img/NIKE+DUNK+LOW+RETRO+SE.jpg",
+          desc: "Phong cách streetwear trẻ trung, dễ phối outfit.",
           sizes: [39, 40, 41, 42],
         },
         {
-          id: "m3",
-          name: "Kinetic Motion Grip",
-          category: "Training",
-          price: 3190000,
-          oldPrice: 3490000,
-          rating: 4.8,
-          tag: "Studio",
-          season: 2025,
-          colorA: "#3e3c3a",
-          colorB: "#bba38b",
-          desc: "Đế bám tốt cho gym nhẹ, chuyển hướng nhanh và giữ ổn định cổ chân.",
-          sizes: [40, 41, 42, 43, 44],
-        },
-        {
-          id: "m4",
-          name: "Kinetic Metro Ease",
-          category: "Everyday",
-          price: 2190000,
-          oldPrice: 2590000,
-          rating: 4.6,
-          tag: "Daily",
-          season: 2025,
-          colorA: "#4c4a46",
-          colorB: "#f0ebe3",
-          desc: "Phiên bản đi hằng ngày với form êm chân, phù hợp lịch trình bận rộn.",
-          sizes: [38, 39, 40, 41, 42],
-        },
-        {
-          id: "m5",
-          name: "Kinetic Storm Trail",
-          category: "Outdoor",
-          price: 3890000,
-          oldPrice: 4290000,
-          rating: 4.9,
-          tag: "Limited",
-          season: 2026,
-          colorA: "#20211f",
-          colorB: "#7f705e",
-          desc: "Thiết kế đế dày, gai sâu và phần upper cứng cáp cho chuyển động đa địa hình.",
-          sizes: [40, 41, 42, 43, 44],
-        },
-        {
-          id: "m6",
-          name: "Kinetic Mono Pace",
-          category: "Lifestyle",
-          price: 2590000,
+          id: "n9",
+          name: "Nike Shox Ride 2",
+          category: "Running",
+          price: 4999000,
           oldPrice: 0,
-          rating: 4.5,
-          tag: "Clean",
-          season: 2024,
-          colorA: "#343434",
-          colorB: "#ebe4dc",
-          desc: "Phối màu monochrome tinh giản, ưu tiên cảm giác sạch và sang khi lên chân.",
+          rating: 4.7,
+          tag: "Tech",
+          season: 2025,
+          image: "../img/NIKE+SHOX+RIDE+2.jpg",
+          desc: "Công nghệ Shox độc đáo giúp hấp thụ lực và tăng độ nảy.",
+          sizes: [40, 41, 42, 43],
+        },
+        {
+          id: "n10",
+          name: "Nike Zoom Vomero 5 SE",
+          category: "Running",
+          price: 4999999,
+          oldPrice: 0,
+          rating: 4.9,
+          tag: "Premium",
+          season: 2026,
+          image: "../img/NIKE+ZOOM+VOMERO+5+SE.jpg",
+          desc: "Đệm Zoom cao cấp, mang lại trải nghiệm chạy êm ái tối đa.",
           sizes: [39, 40, 41, 42, 43],
         },
       ];
@@ -1062,7 +1106,7 @@
         query: "",
         category: "all",
         size: "all",
-        price: 4200000,
+        price: Infinity,
         sort: "featured",
         wishlist: JSON.parse(localStorage.getItem("wishlist")) || [],
       };
@@ -1166,17 +1210,12 @@
 
       function createShoeArt(product) {
         return `
-                <div class="product-shoe" aria-hidden="true">
-                    <div class="shoe-shadow"></div>
-                    <div class="shoe-base" style="background:linear-gradient(135deg, ${product.colorA}, ${product.colorB} 58%, #f4eee7);"></div>
-                    <div class="shoe-sole"></div>
-                    <div class="shoe-detail one"></div>
-                    <div class="shoe-detail two"></div>
-                    <div class="shoe-lace lace-1"></div>
-                    <div class="shoe-lace lace-2"></div>
-                    <div class="shoe-lace lace-3"></div>
-                </div>
-            `;
+    <img 
+      src="${product.image}" 
+      alt="${product.name}" 
+      style="width:100%; height:100%; object-fit:contain;"
+    >
+  `;
       }
 
       function renderProducts() {
@@ -1213,7 +1252,7 @@
                                     <span class="product-price">${formatCurrency(product.price)}</span>
                                     ${product.oldPrice ? `<span class="old-price">${formatCurrency(product.oldPrice)}</span>` : ""}
                                 </div>
-                                <button class="add-btn" type="button" data-id="${product.id}">Thêm giỏ</button>
+                                <a href="detail.html?id=${product.id}" class="add-btn">Xem chi tiết</a>
                             </div>
                         </div>
                     </article>
