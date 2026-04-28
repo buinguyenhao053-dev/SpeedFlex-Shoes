@@ -715,6 +715,52 @@
           width: 100%;
         }
       }
+      .product-media {
+        position: relative;
+        background: linear-gradient(180deg, #efe9e1, #e6ddd3);
+        height: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .product-media {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1; /* 🔥 khung vuông */
+        background: linear-gradient(180deg, #efe9e1, #e6ddd3);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .product-img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain; /* 🔥 giữ tỉ lệ, không méo */
+
+        filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.15));
+        transition: 0.3s;
+      }
+
+      .product-card:hover .product-img {
+        transform: scale(1.05);
+      }
+      /* hover xịn */
+      .product-card:hover .product-img {
+        transform: scale(1.08) translateY(-4px);
+      }
+
+      /* badge + tim đè lên đẹp hơn */
+      .product-badge {
+        backdrop-filter: blur(6px);
+      }
+
+      .wishlist-btn {
+        backdrop-filter: blur(6px);
+      }
     </style>
   </head>
   <body class="men-page">
@@ -735,8 +781,6 @@
         <a href="men.html">Nam</a>
         <a href="women.html">Nữ</a>
         <a href="sale.html">Đang Sale</a>
-
-        
       </nav>
 
       <div class="icons">
@@ -973,88 +1017,171 @@
     <script>
       const products = [
         {
-          id: "m1",
-          name: "Kinetic AirFlex Runner",
-          category: "Running",
-          price: 2890000,
-          oldPrice: 3290000,
-          rating: 4.9,
+          id: "n1",
+          name: "Nike Air Force 1 '07",
+          category: "Lifestyle",
+          price: 2900000,
+          oldPrice: 3200000,
+          rating: 4.8,
           tag: "Best seller",
           season: 2026,
-          colorA: "#232323",
-          colorB: "#8a8a8a",
-          desc: "Mẫu chạy nhẹ với upper knit ôm chân, thoáng khí và đệm phản hồi tốt.",
+          image: "../img/giayNam_01.jpg",
+          desc: "Mẫu sneaker huyền thoại với thiết kế tối giản, dễ phối đồ.",
           sizes: [39, 40, 41, 42, 43],
         },
         {
-          id: "m2",
-          name: "Kinetic StreetForm Low",
-          category: "Lifestyle",
-          price: 2450000,
-          oldPrice: 0,
+          id: "n2",
+          name: "Nike Air Max 270",
+          category: "Running",
+          price: 3500000,
+          oldPrice: 3900000,
           rating: 4.7,
-          tag: "New",
+          tag: "Popular",
           season: 2026,
-          colorA: "#111111",
-          colorB: "#d8cfc2",
-          desc: "Silhouette thấp, gọn và trung tính cho outfit streetwear hằng ngày.",
+          image:
+            "../img/giayNam_02.jpg",
+          desc: "Đệm Air lớn ở gót mang lại cảm giác êm ái suốt ngày dài.",
+          sizes: [40, 41, 42, 43, 44],
+        },
+        {
+          id: "n3",
+          name: "Nike Revolution 6",
+          category: "Running",
+          price: 1800000,
+          oldPrice: 2100000,
+          rating: 4.5,
+          tag: "Budget",
+          season: 2025,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/revolution-6-next-nature-running-shoes.png",
+          desc: "Giày chạy nhẹ, phù hợp người mới bắt đầu.",
+          sizes: [39, 40, 41, 42, 43],
+        },
+        {
+          id: "n4",
+          name: "Nike Air Jordan 1 Low",
+          category: "Lifestyle",
+          price: 3200000,
+          oldPrice: 3500000,
+          rating: 4.9,
+          tag: "Hot",
+          season: 2026,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/air-jordan-1-low-shoes.png",
+          desc: "Phiên bản thấp của Jordan 1, phong cách streetwear.",
+          sizes: [40, 41, 42, 43],
+        },
+        {
+          id: "n5",
+          name: "Nike Pegasus 40",
+          category: "Running",
+          price: 3600000,
+          oldPrice: 3900000,
+          rating: 4.8,
+          tag: "Runner",
+          season: 2026,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/pegasus-40-road-running-shoes.png",
+          desc: "Dòng chạy bộ nổi tiếng với độ ổn định cao.",
+          sizes: [40, 41, 42, 43, 44],
+        },
+        {
+          id: "n6",
+          name: "Nike Blazer Mid '77",
+          category: "Lifestyle",
+          price: 2700000,
+          oldPrice: 3000000,
+          rating: 4.6,
+          tag: "Classic",
+          season: 2025,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/blazer-mid-77-vintage-shoes.png",
+          desc: "Thiết kế cổ cao cổ điển mang phong cách retro.",
           sizes: [39, 40, 41, 42],
         },
         {
-          id: "m3",
-          name: "Kinetic Motion Grip",
-          category: "Training",
-          price: 3190000,
-          oldPrice: 3490000,
-          rating: 4.8,
-          tag: "Studio",
-          season: 2025,
-          colorA: "#3e3c3a",
-          colorB: "#bba38b",
-          desc: "Đế bám tốt cho gym nhẹ, chuyển hướng nhanh và giữ ổn định cổ chân.",
-          sizes: [40, 41, 42, 43, 44],
-        },
-        {
-          id: "m4",
-          name: "Kinetic Metro Ease",
-          category: "Everyday",
-          price: 2190000,
-          oldPrice: 2590000,
-          rating: 4.6,
-          tag: "Daily",
-          season: 2025,
-          colorA: "#4c4a46",
-          colorB: "#f0ebe3",
-          desc: "Phiên bản đi hằng ngày với form êm chân, phù hợp lịch trình bận rộn.",
-          sizes: [38, 39, 40, 41, 42],
-        },
-        {
-          id: "m5",
-          name: "Kinetic Storm Trail",
-          category: "Outdoor",
-          price: 3890000,
-          oldPrice: 4290000,
-          rating: 4.9,
-          tag: "Limited",
-          season: 2026,
-          colorA: "#20211f",
-          colorB: "#7f705e",
-          desc: "Thiết kế đế dày, gai sâu và phần upper cứng cáp cho chuyển động đa địa hình.",
-          sizes: [40, 41, 42, 43, 44],
-        },
-        {
-          id: "m6",
-          name: "Kinetic Mono Pace",
+          id: "n7",
+          name: "Nike Dunk Low",
           category: "Lifestyle",
-          price: 2590000,
-          oldPrice: 0,
-          rating: 4.5,
-          tag: "Clean",
-          season: 2024,
-          colorA: "#343434",
-          colorB: "#ebe4dc",
-          desc: "Phối màu monochrome tinh giản, ưu tiên cảm giác sạch và sang khi lên chân.",
+          price: 3100000,
+          oldPrice: 3400000,
+          rating: 4.8,
+          tag: "Trending",
+          season: 2026,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/dunk-low-shoes.png",
+          desc: "Mẫu giày cực hot trong giới trẻ.",
           sizes: [39, 40, 41, 42, 43],
+        },
+        {
+          id: "n8",
+          name: "Nike Metcon 9",
+          category: "Training",
+          price: 3800000,
+          oldPrice: 4100000,
+          rating: 4.7,
+          tag: "Gym",
+          season: 2026,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/metcon-9-training-shoes.png",
+          desc: "Giày tập gym ổn định, hỗ trợ lực tốt.",
+          sizes: [40, 41, 42, 43, 44],
+        },
+        {
+          id: "n9",
+          name: "Nike ZoomX Vaporfly Next%",
+          category: "Running",
+          price: 6000000,
+          oldPrice: 6500000,
+          rating: 4.9,
+          tag: "Pro",
+          season: 2026,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/zoomx-vaporfly-next-shoes.png",
+          desc: "Giày chạy hiệu năng cao dành cho runner chuyên nghiệp.",
+          sizes: [40, 41, 42, 43],
+        },
+        {
+          id: "n10",
+          name: "Nike Air Max 90",
+          category: "Lifestyle",
+          price: 3200000,
+          oldPrice: 3500000,
+          rating: 4.8,
+          tag: "Classic",
+          season: 2025,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/air-max-90-shoes.png",
+          desc: "Thiết kế Air Max cổ điển, cực kỳ bền.",
+          sizes: [39, 40, 41, 42, 43],
+        },
+        {
+          id: "n11",
+          name: "Nike Downshifter 12",
+          category: "Running",
+          price: 1900000,
+          oldPrice: 2200000,
+          rating: 4.5,
+          tag: "Value",
+          season: 2025,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/downshifter-12-running-shoes.png",
+          desc: "Giày chạy giá tốt, nhẹ và thoáng.",
+          sizes: [39, 40, 41, 42, 43],
+        },
+        {
+          id: "n12",
+          name: "Nike Air Huarache",
+          category: "Lifestyle",
+          price: 3300000,
+          oldPrice: 3600000,
+          rating: 4.6,
+          tag: "Unique",
+          season: 2025,
+          image:
+            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/air-huarache-shoes.png",
+          desc: "Thiết kế độc đáo ôm chân cực tốt.",
+          sizes: [40, 41, 42, 43],
         },
       ];
 
@@ -1166,17 +1293,10 @@
 
       function createShoeArt(product) {
         return `
-                <div class="product-shoe" aria-hidden="true">
-                    <div class="shoe-shadow"></div>
-                    <div class="shoe-base" style="background:linear-gradient(135deg, ${product.colorA}, ${product.colorB} 58%, #f4eee7);"></div>
-                    <div class="shoe-sole"></div>
-                    <div class="shoe-detail one"></div>
-                    <div class="shoe-detail two"></div>
-                    <div class="shoe-lace lace-1"></div>
-                    <div class="shoe-lace lace-2"></div>
-                    <div class="shoe-lace lace-3"></div>
-                </div>
-            `;
+    <div class="img-wrap">
+      <img src="${product.image}" alt="${product.name}" class="product-img"/>
+    </div>
+  `;
       }
 
       function renderProducts() {
