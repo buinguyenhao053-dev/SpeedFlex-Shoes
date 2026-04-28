@@ -1,0 +1,1338 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nam - HAO SHOES</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- <link rel="stylesheet" href="../assets/MaterialSymbolsOutlined.woff2"> -->
+    <style>
+      .men-page {
+        background: linear-gradient(180deg, #f8f6f2 0%, #f3efe8 100%);
+      }
+
+      .men-hero {
+        padding: 56px 40px 30px;
+      }
+
+      .men-hero-inner {
+        background: linear-gradient(
+          135deg,
+          #1d1d1d 0%,
+          #5b514a 55%,
+          #d6c7b8 100%
+        );
+        border-radius: 32px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        min-height: 520px;
+        box-shadow: 0 18px 40px rgba(17, 17, 17, 0.12);
+      }
+
+      .hero-copy {
+        padding: 64px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 22px;
+      }
+
+      .eyebrow {
+        width: fit-content;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+        font-size: 14px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      .hero-copy h1 {
+        font-size: 64px;
+        line-height: 1;
+        margin: 0;
+        max-width: 560px;
+      }
+
+      .hero-copy p {
+        margin: 0;
+        max-width: 520px;
+        font-size: 18px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero-secondary {
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        border-radius: 30px;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .hero-secondary:hover {
+        color: #111;
+        background: #fff;
+      }
+
+      .hero-panel {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        padding: 26px;
+      }
+
+      .hero-visual {
+        width: 100%;
+        border-radius: 28px;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(255, 255, 255, 0.45),
+            transparent 32%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.04)
+          ),
+          #e6ddd3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 28px;
+        color: #111;
+      }
+
+      .stat-card {
+        align-self: flex-end;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 20px;
+        padding: 16px 18px;
+        width: 180px;
+        box-shadow: 0 8px 24px rgba(17, 17, 17, 0.08);
+      }
+
+      .stat-card span {
+        display: block;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 6px;
+      }
+
+      .stat-card strong {
+        font-size: 26px;
+      }
+
+      .shoe-art {
+        align-self: center;
+        width: min(380px, 100%);
+        aspect-ratio: 1.1;
+        position: relative;
+        filter: drop-shadow(0 26px 32px rgba(17, 17, 17, 0.22));
+      }
+
+      .shoe-base,
+      .shoe-sole,
+      .shoe-lace,
+      .shoe-detail,
+      .shoe-shadow {
+        position: absolute;
+        border-radius: 999px;
+      }
+
+      .shoe-shadow {
+        inset: auto 8% 2% 12%;
+        height: 48px;
+        background: rgba(0, 0, 0, 0.15);
+        filter: blur(20px);
+      }
+
+      .shoe-base {
+        inset: 18% 10% 18% 8%;
+        background: linear-gradient(135deg, #2c2c2c, #747474 50%, #f0ece6);
+        transform: rotate(-16deg);
+        clip-path: polygon(
+          9% 56%,
+          18% 38%,
+          37% 24%,
+          60% 24%,
+          85% 34%,
+          96% 49%,
+          92% 68%,
+          75% 74%,
+          31% 77%,
+          11% 71%
+        );
+      }
+
+      .shoe-sole {
+        inset: auto 10% 14% 10%;
+        height: 70px;
+        background: linear-gradient(180deg, #f8f5ef, #d3cabf);
+        transform: rotate(-14deg);
+        clip-path: polygon(
+          3% 34%,
+          18% 22%,
+          62% 18%,
+          92% 32%,
+          98% 52%,
+          91% 69%,
+          39% 83%,
+          9% 76%,
+          1% 58%
+        );
+      }
+
+      .shoe-detail {
+        background: rgba(255, 255, 255, 0.4);
+        transform: rotate(-17deg);
+      }
+
+      .shoe-detail.one {
+        inset: 31% 26% auto 28%;
+        height: 18px;
+      }
+
+      .shoe-detail.two {
+        inset: 40% 22% auto 34%;
+        height: 14px;
+      }
+
+      .shoe-lace {
+        width: 28%;
+        height: 6px;
+        background: #1d1d1d;
+        transform: rotate(-28deg);
+      }
+
+      .lace-1 {
+        top: 35%;
+        left: 34%;
+      }
+      .lace-2 {
+        top: 40%;
+        left: 39%;
+      }
+      .lace-3 {
+        top: 45%;
+        left: 44%;
+      }
+
+      .hero-note {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .hero-note strong {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .feature-strip,
+      .catalog-shell,
+      .editorial-strip {
+        padding: 0 40px 40px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .feature-item {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(17, 17, 17, 0.06);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 10px 25px rgba(17, 17, 17, 0.04);
+      }
+
+      .feature-item h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .feature-item p {
+        margin: 0;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .catalog-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: end;
+        margin-bottom: 26px;
+      }
+
+      .catalog-head h2 {
+        margin: 0 0 8px;
+        font-size: 40px;
+      }
+
+      .catalog-head p {
+        margin: 0;
+        color: #666;
+      }
+
+      .catalog-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .filters-panel,
+      .catalog-panel,
+      .editorial-card {
+        background: rgba(255, 255, 255, 0.78);
+        border-radius: 28px;
+        border: 1px solid rgba(17, 17, 17, 0.06);
+        box-shadow: 0 15px 35px rgba(17, 17, 17, 0.05);
+      }
+
+      .filters-panel {
+        padding: 24px;
+        position: sticky;
+        top: 110px;
+      }
+
+      .filter-group + .filter-group {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(17, 17, 17, 0.08);
+      }
+
+      .filter-group h3 {
+        font-size: 17px;
+        margin: 0 0 14px;
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #f3eee7;
+        border-radius: 18px;
+        padding: 12px 14px;
+      }
+
+      .search-box input,
+      .sort-select {
+        border: none;
+        background: transparent;
+        outline: none;
+        width: 100%;
+      }
+
+      .chip-list,
+      .size-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .filter-chip,
+      .size-chip {
+        border: 1px solid #d8cfc2;
+        background: #fff;
+        border-radius: 999px;
+        padding: 10px 14px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .filter-chip.active,
+      .size-chip.active {
+        background: #111;
+        color: #fff;
+        border-color: #111;
+      }
+
+      .filter-chip:hover,
+      .size-chip:hover {
+        transform: translateY(-1px);
+      }
+
+      .price-range {
+        width: 100%;
+        accent-color: #111;
+      }
+
+      .price-label {
+        margin-top: 12px;
+        color: #666;
+        font-weight: 600;
+      }
+
+      .filters-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .ghost-btn {
+        flex: 1;
+        border: 1px solid #111;
+        background: transparent;
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-weight: 700;
+      }
+
+      .catalog-panel {
+        padding: 24px;
+      }
+
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+      }
+
+      .result-meta {
+        color: #666;
+        font-weight: 600;
+      }
+
+      .toolbar-controls {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .sort-wrap {
+        background: #f3eee7;
+        border-radius: 999px;
+        padding: 10px 16px;
+        min-width: 220px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .product-card {
+        background: #fff;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(17, 17, 17, 0.06);
+        transition: 0.25s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 32px rgba(17, 17, 17, 0.08);
+      }
+
+      .product-media {
+        position: relative;
+        padding: 18px;
+        background: linear-gradient(180deg, #efe9e1, #e6ddd3);
+        min-height: 220px;
+      }
+
+      .product-badge,
+      .wishlist-btn {
+        position: absolute;
+        top: 18px;
+        z-index: 1;
+      }
+
+      .product-badge {
+        left: 18px;
+        background: rgba(17, 17, 17, 0.88);
+        color: #fff;
+        font-size: 12px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .wishlist-btn {
+        right: 18px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.86);
+        font-size: 18px;
+      }
+
+      .wishlist-btn.active {
+        background: #111;
+        color: #fff;
+      }
+
+      .product-shoe {
+        width: 100%;
+        aspect-ratio: 1.4;
+        position: relative;
+        margin-top: 14px;
+      }
+
+      .product-shoe .shoe-base {
+        inset: 18% 10% 18% 8%;
+      }
+      .product-shoe .shoe-sole {
+        inset: auto 10% 14% 10%;
+      }
+      .product-shoe .shoe-shadow {
+        inset: auto 8% 4% 10%;
+      }
+      .product-shoe .shoe-detail.one {
+        inset: 31% 26% auto 28%;
+      }
+      .product-shoe .shoe-detail.two {
+        inset: 40% 22% auto 34%;
+      }
+      .product-shoe .lace-1 {
+        top: 35%;
+        left: 34%;
+      }
+      .product-shoe .lace-2 {
+        top: 40%;
+        left: 39%;
+      }
+      .product-shoe .lace-3 {
+        top: 45%;
+        left: 44%;
+      }
+
+      .product-info {
+        padding: 22px;
+      }
+
+      .product-topline,
+      .product-actions,
+      .mini-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .product-topline {
+        margin-bottom: 10px;
+      }
+
+      .product-title {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      .product-category {
+        color: #7c6c5e;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-weight: 700;
+      }
+
+      .product-desc {
+        color: #666;
+        line-height: 1.6;
+        min-height: 50px;
+        margin-bottom: 16px;
+      }
+
+      .mini-meta {
+        margin-bottom: 18px;
+        color: #444;
+        font-size: 14px;
+        flex-wrap: wrap;
+      }
+
+      .price-wrap {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .product-price {
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      .old-price {
+        color: #999;
+        text-decoration: line-through;
+      }
+
+      .add-btn {
+        border: none;
+        border-radius: 999px;
+        padding: 12px 18px;
+        background: #111;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 56px 24px;
+        color: #666;
+      }
+
+      .editorial-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 22px;
+      }
+
+      .editorial-card {
+        padding: 28px;
+      }
+
+      .editorial-card.dark {
+        background: #111;
+        color: #fff;
+      }
+
+      .editorial-card p {
+        color: inherit;
+        opacity: 0.85;
+        line-height: 1.7;
+      }
+
+      .toast-note {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: #111;
+        color: #fff;
+        padding: 14px 18px;
+        border-radius: 14px;
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: 0.25s ease;
+        z-index: 1200;
+      }
+
+      .toast-note.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1200px) {
+        .feature-grid,
+        .editorial-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .catalog-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .filters-panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .men-hero,
+        .feature-strip,
+        .catalog-shell,
+        .editorial-strip {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .men-hero-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          padding: 34px 24px 12px;
+        }
+
+        .hero-copy h1 {
+          font-size: 46px;
+        }
+
+        .hero-panel {
+          padding: 10px 24px 24px;
+        }
+
+        .feature-grid,
+        .editorial-grid,
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .catalog-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .hero-note,
+        .product-actions,
+        .toolbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .toolbar-controls,
+        .filters-actions {
+          width: 100%;
+        }
+
+        .sort-wrap,
+        .ghost-btn,
+        .add-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body class="men-page">
+    <div class="topbar">
+      <div>Miễn phí vận chuyển toàn quốc</div>
+      <div>
+        <a href="login.html">Đăng nhập</a>
+        <a href="register.html">Đăng ký</a>
+      </div>
+    </div>
+
+    <header>
+      <a href="index.html" class="logo">HAO SHOES</a>
+
+      <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="about.html">Thương hiệu</a>
+        <a href="men.html">Nam</a>
+        <a href="women.html">Nữ</a>
+        <a href="sale.html">Đang Sale</a>
+
+        
+      </nav>
+
+      <div class="icons">
+        <a href="cart.html" class="icon icon-cart"></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="men-hero">
+        <div class="men-hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">Kinetic Footwear / Men</span>
+            <h1>Move sharp. Land lighter. Look stronger.</h1>
+            <p>
+              Bộ sưu tập giày nam lấy cảm hứng từ nhịp chuyển động đô thị: form
+              gọn, đệm êm, phối màu trung tính và đủ linh hoạt để đi làm, đi
+              chơi hay tập nhẹ cuối ngày.
+            </p>
+            <div class="hero-actions">
+              <a class="my-btn" href="#catalog">Khám phá bộ sưu tập</a>
+              <a class="hero-secondary" href="#stories"
+                >Xem câu chuyện thiết kế</a
+              >
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-visual">
+              <div class="stat-card">
+                <span>Dòng nổi bật</span>
+                <strong>84%</strong>
+                <div>khách hàng chọn bản đệm AirFlex</div>
+              </div>
+
+              <div class="shoe-art" aria-hidden="true">
+                <div class="shoe-shadow"></div>
+                <div class="shoe-base"></div>
+                <div class="shoe-sole"></div>
+                <div class="shoe-detail one"></div>
+                <div class="shoe-detail two"></div>
+                <div class="shoe-lace lace-1"></div>
+                <div class="shoe-lace lace-2"></div>
+                <div class="shoe-lace lace-3"></div>
+              </div>
+
+              <div class="hero-note">
+                <div>
+                  <strong>Drop 01</strong>
+                  Upper knit thoáng khí, đế nhẹ cho cả ngày di chuyển.
+                </div>
+                <div>
+                  <strong>Neutral tones</strong>
+                  Dễ phối outfit với bảng màu than, cát và kem.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-strip">
+        <div class="feature-grid">
+          <article class="feature-item">
+            <h3>Responsive cushioning</h3>
+            <p>
+              Đệm đàn hồi tốt cho bước đi êm, phù hợp cả di chuyển hằng ngày lẫn
+              sneaker styling.
+            </p>
+          </article>
+          <article class="feature-item">
+            <h3>Urban minimal fit</h3>
+            <p>
+              Form gọn, cổ thấp, thân giày tinh giản để phù hợp phong cách
+              streetwear hiện đại.
+            </p>
+          </article>
+          <article class="feature-item">
+            <h3>Quick add to cart</h3>
+            <p>
+              Thêm giỏ hàng trực tiếp trên trang danh mục, đồng bộ với trang
+              `cart.html` hiện có.
+            </p>
+          </article>
+          <article class="feature-item">
+            <h3>Filter by intent</h3>
+            <p>
+              Lọc nhanh theo nhu cầu sử dụng như chạy nhẹ, lifestyle, tập gym
+              hoặc hằng ngày.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="catalog-shell" id="catalog">
+        <div class="catalog-head">
+          <div>
+            <h2>Bộ sưu tập giày nam</h2>
+            <p>
+              Chọn nhanh theo nhu cầu, mức giá và kích cỡ trước khi thêm vào
+              giỏ.
+            </p>
+          </div>
+          <a class="my-btn" href="cart.html">Đến giỏ hàng</a>
+        </div>
+
+        <div class="catalog-layout">
+          <aside class="filters-panel">
+            <div class="filter-group">
+              <h3>Tìm kiếm</h3>
+              <label class="search-box">
+                <span>Tìm</span>
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Tên giày, bộ sưu tập..."
+                />
+              </label>
+            </div>
+
+            <div class="filter-group">
+              <h3>Danh mục</h3>
+              <div class="chip-list" id="categoryFilters"></div>
+            </div>
+
+            <div class="filter-group">
+              <h3>Kích cỡ</h3>
+              <div class="size-list" id="sizeFilters"></div>
+            </div>
+
+            <div class="filter-group">
+              <h3>Mức giá</h3>
+              <input
+                id="priceRange"
+                class="price-range"
+                type="range"
+                min="1500000"
+                max="4200000"
+                step="100000"
+                value="4200000"
+              />
+              <div class="price-label" id="priceLabel">Dưới 4.200.000đ</div>
+            </div>
+
+            <div class="filters-actions">
+              <button id="clearFilters" class="ghost-btn" type="button">
+                Xóa bộ lọc
+              </button>
+            </div>
+          </aside>
+
+          <section class="catalog-panel">
+            <div class="toolbar">
+              <div class="result-meta" id="resultCount">0 sản phẩm</div>
+              <div class="toolbar-controls">
+                <div class="sort-wrap">
+                  <select
+                    id="sortSelect"
+                    class="sort-select"
+                    aria-label="Sắp xếp sản phẩm"
+                  >
+                    <option value="featured">Sắp xếp: Nổi bật</option>
+                    <option value="price-asc">Giá tăng dần</option>
+                    <option value="price-desc">Giá giảm dần</option>
+                    <option value="rating-desc">Đánh giá cao</option>
+                    <option value="newest">Mới nhất</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+            <div class="empty-state d-none" id="emptyState">
+              Không tìm thấy mẫu phù hợp. Hãy thử bỏ bớt bộ lọc hoặc tăng khoảng
+              giá.
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="editorial-strip" id="stories">
+        <div class="editorial-grid">
+          <article class="editorial-card dark">
+            <span class="eyebrow">Design story</span>
+            <h3 class="mt-3">Thiết kế cho nhịp sống nhanh</h3>
+            <p>
+              Tinh thần của KINETIC-Footwear là cảm giác chuyển động liên tục:
+              đế nhiều lớp, thân giày ôm chân, nhấn chi tiết tối giản và phối
+              vật liệu trung tính để dễ mặc hằng ngày.
+            </p>
+          </article>
+          <article class="editorial-card">
+            <span class="eyebrow" style="background: #f3eee7; color: #111"
+              >Wardrobe fit</span
+            >
+            <h3 class="mt-3">Phù hợp với nhiều outfit</h3>
+            <p>
+              Từ quần jeans, quần jogger đến smart-casual, các phối màu đen
+              than, xám khói và kem cát giúp bộ sưu tập nam giữ được tính hiện
+              đại mà không khó phối đồ.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <h4>Thông tin shop</h4>
+          <p>Địa chỉ: TP.HCM</p>
+          <p>SĐT: 0909999999</p>
+          <p>Email: haoshoes@gmail.com</p>
+        </div>
+
+        <div>
+          <h4>Chính sách khách hàng</h4>
+          <p>Hướng dẫn đặt hàng</p>
+          <p>Bảo hành</p>
+          <p>Đổi hàng</p>
+          <p>Thanh toán</p>
+        </div>
+
+        <div>
+          <h4>Giới thiệu</h4>
+          <p>Thành lập 2026</p>
+          <p>Shop giày thời trang</p>
+        </div>
+      </div>
+      <p class="copy">© 2026 HAO SHOES STORE</p>
+    </footer>
+
+    <div class="toast-note" id="toastNote">Đã cập nhật giỏ hàng</div>
+
+    <script>
+      const products = [
+        {
+          id: "m1",
+          name: "Kinetic AirFlex Runner",
+          category: "Running",
+          price: 2890000,
+          oldPrice: 3290000,
+          rating: 4.9,
+          tag: "Best seller",
+          season: 2026,
+          colorA: "#232323",
+          colorB: "#8a8a8a",
+          desc: "Mẫu chạy nhẹ với upper knit ôm chân, thoáng khí và đệm phản hồi tốt.",
+          sizes: [39, 40, 41, 42, 43],
+        },
+        {
+          id: "m2",
+          name: "Kinetic StreetForm Low",
+          category: "Lifestyle",
+          price: 2450000,
+          oldPrice: 0,
+          rating: 4.7,
+          tag: "New",
+          season: 2026,
+          colorA: "#111111",
+          colorB: "#d8cfc2",
+          desc: "Silhouette thấp, gọn và trung tính cho outfit streetwear hằng ngày.",
+          sizes: [39, 40, 41, 42],
+        },
+        {
+          id: "m3",
+          name: "Kinetic Motion Grip",
+          category: "Training",
+          price: 3190000,
+          oldPrice: 3490000,
+          rating: 4.8,
+          tag: "Studio",
+          season: 2025,
+          colorA: "#3e3c3a",
+          colorB: "#bba38b",
+          desc: "Đế bám tốt cho gym nhẹ, chuyển hướng nhanh và giữ ổn định cổ chân.",
+          sizes: [40, 41, 42, 43, 44],
+        },
+        {
+          id: "m4",
+          name: "Kinetic Metro Ease",
+          category: "Everyday",
+          price: 2190000,
+          oldPrice: 2590000,
+          rating: 4.6,
+          tag: "Daily",
+          season: 2025,
+          colorA: "#4c4a46",
+          colorB: "#f0ebe3",
+          desc: "Phiên bản đi hằng ngày với form êm chân, phù hợp lịch trình bận rộn.",
+          sizes: [38, 39, 40, 41, 42],
+        },
+        {
+          id: "m5",
+          name: "Kinetic Storm Trail",
+          category: "Outdoor",
+          price: 3890000,
+          oldPrice: 4290000,
+          rating: 4.9,
+          tag: "Limited",
+          season: 2026,
+          colorA: "#20211f",
+          colorB: "#7f705e",
+          desc: "Thiết kế đế dày, gai sâu và phần upper cứng cáp cho chuyển động đa địa hình.",
+          sizes: [40, 41, 42, 43, 44],
+        },
+        {
+          id: "m6",
+          name: "Kinetic Mono Pace",
+          category: "Lifestyle",
+          price: 2590000,
+          oldPrice: 0,
+          rating: 4.5,
+          tag: "Clean",
+          season: 2024,
+          colorA: "#343434",
+          colorB: "#ebe4dc",
+          desc: "Phối màu monochrome tinh giản, ưu tiên cảm giác sạch và sang khi lên chân.",
+          sizes: [39, 40, 41, 42, 43],
+        },
+      ];
+
+      const state = {
+        query: "",
+        category: "all",
+        size: "all",
+        price: 4200000,
+        sort: "featured",
+        wishlist: JSON.parse(localStorage.getItem("wishlist")) || [],
+      };
+
+      const categoryFilters = [
+        "all",
+        ...new Set(products.map((product) => product.category)),
+      ];
+      const sizeFilters = [
+        "all",
+        ...new Set(products.flatMap((product) => product.sizes)),
+      ].sort((a, b) => {
+        if (a === "all") return -1;
+        if (b === "all") return 1;
+        return a - b;
+      });
+
+      const categoryFiltersEl = document.getElementById("categoryFilters");
+      const sizeFiltersEl = document.getElementById("sizeFilters");
+      const productGridEl = document.getElementById("productGrid");
+      const resultCountEl = document.getElementById("resultCount");
+      const emptyStateEl = document.getElementById("emptyState");
+      const priceLabelEl = document.getElementById("priceLabel");
+      const toastNoteEl = document.getElementById("toastNote");
+
+      function formatCurrency(value) {
+        return value.toLocaleString("vi-VN") + "đ";
+      }
+
+      function showToast(message) {
+        toastNoteEl.textContent = message;
+        toastNoteEl.classList.add("show");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(
+          () => toastNoteEl.classList.remove("show"),
+          1800,
+        );
+      }
+
+      function renderFilterButtons(
+        container,
+        values,
+        activeValue,
+        clickHandler,
+        formatter,
+      ) {
+        container.innerHTML = values
+          .map(
+            (value) => `
+                <button
+                    type="button"
+                    class="${typeof value === "number" ? "size-chip" : "filter-chip"} ${value === activeValue ? "active" : ""}"
+                    data-value="${value}">
+                    ${formatter(value)}
+                </button>
+            `,
+          )
+          .join("");
+
+        container.querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", () =>
+            clickHandler(button.dataset.value),
+          );
+        });
+      }
+
+      function getFilteredProducts() {
+        let filtered = products.filter((product) => {
+          const matchesQuery =
+            product.name.toLowerCase().includes(state.query) ||
+            product.category.toLowerCase().includes(state.query);
+
+          const matchesCategory =
+            state.category === "all" || product.category === state.category;
+          const matchesSize =
+            state.size === "all" || product.sizes.includes(Number(state.size));
+          const matchesPrice = product.price <= state.price;
+
+          return matchesQuery && matchesCategory && matchesSize && matchesPrice;
+        });
+
+        switch (state.sort) {
+          case "price-asc":
+            filtered.sort((a, b) => a.price - b.price);
+            break;
+          case "price-desc":
+            filtered.sort((a, b) => b.price - a.price);
+            break;
+          case "rating-desc":
+            filtered.sort((a, b) => b.rating - a.rating);
+            break;
+          case "newest":
+            filtered.sort((a, b) => b.season - a.season);
+            break;
+          default:
+            filtered.sort((a, b) => b.rating - a.rating || b.season - a.season);
+        }
+
+        return filtered;
+      }
+
+      function createShoeArt(product) {
+        return `
+                <div class="product-shoe" aria-hidden="true">
+                    <div class="shoe-shadow"></div>
+                    <div class="shoe-base" style="background:linear-gradient(135deg, ${product.colorA}, ${product.colorB} 58%, #f4eee7);"></div>
+                    <div class="shoe-sole"></div>
+                    <div class="shoe-detail one"></div>
+                    <div class="shoe-detail two"></div>
+                    <div class="shoe-lace lace-1"></div>
+                    <div class="shoe-lace lace-2"></div>
+                    <div class="shoe-lace lace-3"></div>
+                </div>
+            `;
+      }
+
+      function renderProducts() {
+        const filtered = getFilteredProducts();
+
+        resultCountEl.textContent = `${filtered.length} sản phẩm`;
+        emptyStateEl.classList.toggle("d-none", filtered.length !== 0);
+        productGridEl.innerHTML = filtered
+          .map((product) => {
+            const isLoved = state.wishlist.includes(product.id);
+
+            return `
+                    <article class="product-card">
+                        <div class="product-media">
+                            <span class="product-badge">${product.tag}</span>
+                            <button class="wishlist-btn ${isLoved ? "active" : ""}" type="button" data-id="${product.id}" aria-label="Yêu thích">
+                                ${isLoved ? "♥" : "♡"}
+                            </button>
+                            ${createShoeArt(product)}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-topline">
+                                <span class="product-category">${product.category}</span>
+                                <span>${product.rating} / 5</span>
+                            </div>
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-desc">${product.desc}</p>
+                            <div class="mini-meta">
+                                <span>Size: ${product.sizes.join(" - ")}</span>
+                                <span>Bộ sưu tập ${product.season}</span>
+                            </div>
+                            <div class="product-actions">
+                                <div class="price-wrap">
+                                    <span class="product-price">${formatCurrency(product.price)}</span>
+                                    ${product.oldPrice ? `<span class="old-price">${formatCurrency(product.oldPrice)}</span>` : ""}
+                                </div>
+                                <button class="add-btn" type="button" data-id="${product.id}">Thêm giỏ</button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+          })
+          .join("");
+
+        productGridEl.querySelectorAll(".add-btn").forEach((button) => {
+          button.addEventListener("click", () => addToCart(button.dataset.id));
+        });
+
+        productGridEl.querySelectorAll(".wishlist-btn").forEach((button) => {
+          button.addEventListener("click", () =>
+            toggleWishlist(button.dataset.id),
+          );
+        });
+      }
+
+      function renderFilters() {
+        renderFilterButtons(
+          categoryFiltersEl,
+          categoryFilters,
+          state.category,
+          (value) => {
+            state.category = value;
+            renderFilters();
+            renderProducts();
+          },
+          (value) => (value === "all" ? "Tất cả" : value),
+        );
+
+        renderFilterButtons(
+          sizeFiltersEl,
+          sizeFilters,
+          state.size,
+          (value) => {
+            state.size = value;
+            renderFilters();
+            renderProducts();
+          },
+          (value) => (value === "all" ? "Mọi size" : `EU ${value}`),
+        );
+
+        priceLabelEl.textContent = `Dưới ${formatCurrency(state.price)}`;
+      }
+
+      function addToCart(productId) {
+        const product = products.find((item) => item.id === productId);
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existing = cart.find((item) => item.id === product.id);
+
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            qty: 1,
+            img: "",
+          });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showToast(`Đã thêm "${product.name}" vào giỏ`);
+      }
+
+      function toggleWishlist(productId) {
+        if (state.wishlist.includes(productId)) {
+          state.wishlist = state.wishlist.filter((id) => id !== productId);
+          showToast("Đã bỏ khỏi yêu thích");
+        } else {
+          state.wishlist.push(productId);
+          showToast("Đã thêm vào yêu thích");
+        }
+
+        localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
+        renderProducts();
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", (event) => {
+          state.query = event.target.value.trim().toLowerCase();
+          renderProducts();
+        });
+
+      document
+        .getElementById("priceRange")
+        .addEventListener("input", (event) => {
+          state.price = Number(event.target.value);
+          renderFilters();
+          renderProducts();
+        });
+
+      document
+        .getElementById("sortSelect")
+        .addEventListener("change", (event) => {
+          state.sort = event.target.value;
+          renderProducts();
+        });
+
+      document.getElementById("clearFilters").addEventListener("click", () => {
+        state.query = "";
+        state.category = "all";
+        state.size = "all";
+        state.price = 4200000;
+        state.sort = "featured";
+
+        document.getElementById("searchInput").value = "";
+        document.getElementById("priceRange").value = 4200000;
+        document.getElementById("sortSelect").value = "featured";
+
+        renderFilters();
+        renderProducts();
+      });
+
+      renderFilters();
+      renderProducts();
+    </script>
+  </body>
+</html>
