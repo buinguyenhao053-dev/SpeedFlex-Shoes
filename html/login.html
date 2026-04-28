@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* FORM LOGIN */
         .section-login {
             height: 600px;
             display: flex;
@@ -38,10 +37,9 @@
     </div>
 
     <header>
-
         <a href="index.html" class="logo">HAO SHOES</a>
     </header>
-    <!-- SECTION LOG -->
+
     <section class="section-login">
         <form class="dangnhap">
             <h2 class="text-center fw-bold">Login / Đăng nhập</h2>
@@ -78,61 +76,73 @@
         </form>
     </section>
 
+<script>
+$(document).ready(function () {
 
+    let isValidPass = false;
+    let isValidMail = false;
 
+    function checkLogin() {
+        $("#btnLogin").prop("disabled", !(isValidPass && isValidMail));
+    }
 
-    <script>
-        let isValidPass = false;
-        let isValidMail = false;
-        function checkLogin() {
-            $("#btnLogin").prop("disabled", !(isValidPass && isValidMail));
+    $("#mailsdt").on("input", function () {
+        let value = $(this).val().trim();
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
+
+        if (value === "") {
+            $("#errmailsdt").text("Không được để trống");
+            isValidMail = false;
+        } else if (!emailRegex.test(value) && !phoneRegex.test(value)) {
+            $("#errmailsdt").text("Email/SĐT không hợp lệ");
+            isValidMail = false;
+        } else {
+            $("#errmailsdt").text("");
+            isValidMail = true;
         }
-        $("#password").blur(function (e) {
-            let password = $("#password").val().trim();
-            if (password === "") {
-                $("#errpassword").text("Không được để trống");
-                isValidPass = false;
-            } else if (password.length < 6) {
-                $("#errpassword").text("Mật khẩu phải >= 6 ký tự");
-                isValidPass = false;
-            } else {
-                $("#errpassword").text("");
-                isValidPass = true;
-            }
-            checkLogin();
-        });
-        $("#mailsdt").blur(function () {
-            let value = $("#mailsdt").val().trim();
-            let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            let phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
-            if (value === "") {
-                $("#errmailsdt").text("Không được để trống");
-                isValidMail = false;
-            } else if (!emailRegex.test(value) && !phoneRegex.test(value)) {
-                $("#errmailsdt").text("Phải là Email hoặc SĐT hợp lệ");
-                isValidMail = false;
-            } else {
-                $("#errmailsdt").text("");
-                isValidMail = true;
-            }
-            checkLogin();
-        });
-        $("#btnLogin").click(function () {
-            let email = $("#mailsdt").val().trim();
-            let password = $("#password").val().trim();
-            let user = JSON.parse(localStorage.getItem("user"));
-            if (!user) {
-                alert("Chưa có tài khoản!");
-                return;
-            }
-            if (email === user.email && password === user.password) {
-                localStorage.setItem("isLogin", true);
-                window.location.href = "index.html";
-            } else {
-                alert("Sai tài khoản hoặc mật khẩu!");
-            }
-        });
-    </script>
+        checkLogin();
+    });
+
+    $("#password").on("input", function () {
+        let password = $(this).val().trim();
+
+        if (password === "") {
+            $("#errpassword").text("Không được để trống");
+            isValidPass = false;
+        } else if (password.length < 6) {
+            $("#errpassword").text(">= 6 ký tự");
+            isValidPass = false;
+        } else {
+            $("#errpassword").text("");
+            isValidPass = true;
+        }
+        checkLogin();
+    });
+
+    $("#btnLogin").click(function () {
+
+        let email = $("#mailsdt").val().trim();
+        let password = $("#password").val().trim();
+
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // tìm user
+        let user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            localStorage.setItem("isLogin", "true");
+            localStorage.setItem("currentUser", JSON.stringify(user)); // lưu user đang login
+
+            alert("Đăng nhập thành công!");
+            window.location.href = "index.html";
+        } else {
+            alert("Sai tài khoản hoặc mật khẩu!");
+        }
+    });
+
+});
+</script>
 
     <footer>
 
