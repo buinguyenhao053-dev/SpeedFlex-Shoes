@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/validate.js"></script>
     <style>
         /* FORM LOGIN */
         .section-login {
@@ -26,7 +25,6 @@
             padding: 30px;
             border-radius: 10px;
         }
-        
     </style>
 </head>
 
@@ -57,28 +55,84 @@
             </div>
 
             <div class="d-grid mb-3">
-                <input name="" id="btnLogin" class="btn btn-dark btnlog" type="button" value="Đăng nhập" disabled/>
+                <input name="" id="btnLogin" class="btn btn-dark btnlog" type="button" value="Đăng nhập" disabled />
             </div>
 
             <div class="mb-3">
-                 <a href="../html/forgot-password.html" class="forgot" style="text-decoration: none;">Quên mật khẩu?</a>
+                <a href="../html/forgot-password.html" class="forgot" style="text-decoration: none;">Quên mật khẩu?</a>
             </div>
 
             <div class="text-center text-muted mb-3">Hoặc đăng nhập với</div>
-            
+
             <div class="d-flex justify-content-center gap-3 mb-3">
                 <button class="btn btn-outline-secondary btn-xahoi" type="button">
-                    <img src="../img/logo-google.png" alt="" > Google
+                    <img src="../img/logo-google.png" alt=""> Google
                 </button>
                 <button class="btn btn-outline-secondary btn-xahoi" type="button">
                     <img src="../img/logo-facebook.png" alt=""> Facebook
                 </button>
             </div>
 
-            <div class="text-center text-muted">Tạo tài khoản mới. <a href="../html/register.html" style="text-decoration: none;">Đăng ký.</a></div>
+            <div class="text-center text-muted">Tạo tài khoản mới. <a href="../html/register.html"
+                    style="text-decoration: none;">Đăng ký.</a></div>
         </form>
     </section>
 
+
+
+
+    <script>
+        let isValidPass = false;
+        let isValidMail = false;
+        function checkLogin() {
+            $("#btnLogin").prop("disabled", !(isValidPass && isValidMail));
+        }
+        $("#password").blur(function (e) {
+            let password = $("#password").val().trim();
+            if (password === "") {
+                $("#errpassword").text("Không được để trống");
+                isValidPass = false;
+            } else if (password.length < 6) {
+                $("#errpassword").text("Mật khẩu phải >= 6 ký tự");
+                isValidPass = false;
+            } else {
+                $("#errpassword").text("");
+                isValidPass = true;
+            }
+            checkLogin();
+        });
+        $("#mailsdt").blur(function () {
+            let value = $("#mailsdt").val().trim();
+            let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
+            if (value === "") {
+                $("#errmailsdt").text("Không được để trống");
+                isValidMail = false;
+            } else if (!emailRegex.test(value) && !phoneRegex.test(value)) {
+                $("#errmailsdt").text("Phải là Email hoặc SĐT hợp lệ");
+                isValidMail = false;
+            } else {
+                $("#errmailsdt").text("");
+                isValidMail = true;
+            }
+            checkLogin();
+        });
+        $("#btnLogin").click(function () {
+            let email = $("#mailsdt").val().trim();
+            let password = $("#password").val().trim();
+            let user = JSON.parse(localStorage.getItem("user"));
+            if (!user) {
+                alert("Chưa có tài khoản!");
+                return;
+            }
+            if (email === user.email && password === user.password) {
+                localStorage.setItem("isLogin", true);
+                window.location.href = "index.html";
+            } else {
+                alert("Sai tài khoản hoặc mật khẩu!");
+            }
+        });
+    </script>
 
     <footer>
 
