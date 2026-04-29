@@ -240,7 +240,7 @@
         state.query = "";
         state.category = "all";
         state.size = "all";
-        state.price = 4200000;
+        state.price = Infinity;
         state.sort = "featured";
 
         document.getElementById("searchInput").value = "";
