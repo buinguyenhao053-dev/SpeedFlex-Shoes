@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết sản phẩm - HAO SHOES</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      body {
+        background: linear-gradient(180deg, #f9f6f2 0%, #f3eee7 100%);
+      }
+      .detail-wrap {
+        padding: 48px 0 18px;
+      }
+      .detail-card {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(17, 17, 17, 0.08);
+        overflow: hidden;
+      }
+      .gallery-panel {
+        background: linear-gradient(180deg, #f1e9df, #e5d9cb);
+        min-height: 460px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 28px;
+      }
+      .gallery-panel img {
+        width: 100%;
+        max-width: 520px;
+        object-fit: contain;
+        filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.22));
+        transition: transform 0.35s ease;
+      }
+      .gallery-panel:hover img {
+        transform: translateY(-4px) scale(1.02);
+      }
+      .info-panel {
+        padding: 34px 34px 30px;
+      }
+      .product-tag {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        background: #111;
+        color: #fff;
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+      .price-line {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 14px 0 8px;
+      }
+      .price-main {
+        font-size: 34px;
+        font-weight: 800;
+      }
+      .price-old {
+        color: #8b8b8b;
+        text-decoration: line-through;
+        font-weight: 600;
+      }
+      .meta-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        color: #555;
+        margin-bottom: 18px;
+      }
+      .size-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .size-btn {
+        min-width: 56px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid #d7cdbf;
+        background: #fff;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+      .size-btn:hover {
+        transform: translateY(-1px);
+      }
+      .size-btn.active {
+        background: #111;
+        color: #fff;
+        border-color: #111;
+      }
+      .qty-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .qty-control {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #d7cdbf;
+        border-radius: 999px;
+        overflow: hidden;
+        background: #fff;
+      }
+      .qty-control button {
+        width: 42px;
+        height: 42px;
+        border: none;
+        background: transparent;
+        font-size: 22px;
+      }
+      .qty-control input {
+        width: 62px;
+        height: 42px;
+        border: none;
+        border-left: 1px solid #e7dfd4;
+        border-right: 1px solid #e7dfd4;
+        text-align: center;
+        outline: none;
+      }
+      .cta-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .add-cart-btn {
+        border: none;
+        border-radius: 999px;
+        padding: 13px 22px;
+        background: linear-gradient(135deg, #111, #303030);
+        color: #fff;
+        font-weight: 700;
+        box-shadow: 0 10px 20px rgba(17, 17, 17, 0.22);
+        transition: 0.2s ease;
+      }
+      .add-cart-btn:hover {
+        transform: translateY(-2px);
+      }
+      .ghost-link {
+        border: 1px solid #111;
+        border-radius: 999px;
+        padding: 11px 20px;
+        text-decoration: none;
+        color: #111;
+        font-weight: 700;
+        background: #fff;
+      }
+      .section-shell {
+        margin-top: 26px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(17, 17, 17, 0.07);
+        border-radius: 24px;
+        padding: 24px;
+      }
+      .similar-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .similar-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        transition: 0.2s ease;
+        text-decoration: none;
+        color: #111;
+      }
+      .similar-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(17, 17, 17, 0.09);
+      }
+      .similar-card img {
+        width: 100%;
+        height: 145px;
+        object-fit: contain;
+        background: linear-gradient(180deg, #efe7de, #e9ded2);
+        padding: 10px;
+      }
+      .similar-info {
+        padding: 12px;
+      }
+      .similar-info h6 {
+        margin: 0 0 6px;
+        font-size: 14px;
+      }
+      .similar-info span {
+        color: #6e6e6e;
+        font-weight: 700;
+      }
+      .toast-note {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        background: #111;
+        color: #fff;
+        padding: 12px 14px;
+        border-radius: 12px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: 0.2s ease;
+        pointer-events: none;
+        z-index: 20;
+      }
+      .toast-note.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (max-width: 992px) {
+        .detail-wrap {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+        .similar-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 576px) {
+        .similar-grid {
+          grid-template-columns: 1fr;
+        }
+        .info-panel {
+          padding: 24px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div>Miễn phí vận chuyển toàn quốc</div>
+        <div id="auth-links">
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
+        </div>
+    </div>
+
+    <header>
+      <a href="../index.html" class="logo">HAO SHOES</a>
+      <nav>
+        <a href="../index.html">Trang chủ</a>
+        <a href="men.html">Nam</a>
+        <a href="women.html">Nữ</a>
+        <a href="sale.html">Đang Sale</a>
+      </nav>
+      <div class="icons">
+        <a href="cart.html" class="icon icon-cart"></a>
+      </div>
+    </header>
+
+    <main class="container detail-wrap">
+      <div class="detail-card">
+        <div class="row g-0">
+          <div class="col-lg-6">
+            <div class="gallery-panel">
+              <img id="img" src="" alt="" />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="info-panel">
+              <span class="product-tag" id="tag"></span>
+              <h1 id="name" class="mt-3 mb-2"></h1>
+              <div class="price-line">
+                <div class="price-main" id="price"></div>
+                <div class="price-old" id="oldPrice"></div>
+              </div>
+              <div class="meta-row">
+                <span id="category"></span>
+                <span id="rating"></span>
+                <span id="season"></span>
+              </div>
+              <p id="desc" class="text-secondary mb-3"></p>
+
+              <h6>Chọn size</h6>
+              <div id="sizes" class="size-grid"></div>
+              <div class="text-danger small mb-2" id="sizeError"></div>
+
+              <div class="qty-row">
+                <strong>Số lượng</strong>
+                <div class="qty-control">
+                  <button type="button" id="decQty">-</button>
+                  <input type="number" id="qty" value="1" min="1" />
+                  <button type="button" id="incQty">+</button>
+                </div>
+              </div>
+
+              <div class="cta-row">
+                <button class="add-cart-btn" id="addCart">Thêm vào giỏ hàng</button>
+                <a class="ghost-link" id="backLink" href="men.html">Quay lại danh mục</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section-shell">
+        <h4 class="mb-2">Thông tin sản phẩm</h4>
+        <p class="mb-0 text-secondary" id="detailDesc"></p>
+      </section>
+
+      <section class="section-shell mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">Sản phẩm tương tự</h4>
+          <a id="viewAllLink" href="men.html">Xem tất cả</a>
+        </div>
+        <div id="similarGrid" class="similar-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <h4>Thông tin shop</h4>
+          <p>Địa chỉ: TP.HCM</p>
+          <p>SĐT: 0909999999</p>
+          <p>Email: haoshoes@gmail.com</p>
+        </div>
+        <div>
+          <h4>Chính sách khách hàng</h4>
+          <p>Hướng dẫn đặt hàng</p>
+          <p>Bảo hành</p>
+          <p>Đổi hàng</p>
+          <p>Thanh toán</p>
+        </div>
+        <div>
+          <h4>Giới thiệu</h4>
+          <p>Thành lập 2026</p>
+          <p>Shop giày thời trang</p>
+        </div>
+      </div>
+      <p class="copy">© 2026 HAO SHOES STORE</p>
+    </footer>
+
+    <div class="toast-note" id="toastNote">Đã thêm vào giỏ hàng</div>
+
+    <script type="module">
+      import { menProducts, womenProducts } from "../js/products.js";
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const source = params.get("source");
+      const allProducts = [...menProducts, ...womenProducts];
+
+      const inferSource = () => {
+        if (source === "women" || source === "men") return source;
+        if (document.referrer.includes("/women.html")) return "women";
+        return "men";
+      };
+      const currentSource = inferSource();
+      const sourceProducts = currentSource === "women" ? womenProducts : menProducts;
+      const product = sourceProducts.find((item) => item.id === id) || allProducts.find((item) => item.id === id);
+
+      const sizeContainer = document.getElementById("sizes");
+      const sizeError = document.getElementById("sizeError");
+      const qtyInput = document.getElementById("qty");
+      const toastEl = document.getElementById("toastNote");
+      let selectedSize = null;
+
+      function formatCurrency(value) {
+        return value.toLocaleString("vi-VN") + "đ";
+      }
+
+      function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add("show");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toastEl.classList.remove("show"), 1700);
+      }
+
+      function renderNotFound() {
+        document.querySelector(".detail-wrap").innerHTML = `
+          <div class="section-shell text-center">
+            <h3>Sản phẩm không tồn tại</h3>
+            <p class="text-secondary">Vui lòng quay lại danh mục để tiếp tục mua sắm.</p>
+            <a class="ghost-link" href="${currentSource === "women" ? "women.html" : "men.html"}">Về danh mục</a>
+          </div>
+        `;
+      }
+
+      function renderSimilarProducts(currentProduct) {
+        const similar = sourceProducts
+          .filter((item) => item.id !== currentProduct.id)
+          .filter((item) => item.category === currentProduct.category)
+          .slice(0, 4);
+
+        const fallback = sourceProducts.filter((item) => item.id !== currentProduct.id).slice(0, 4);
+        const data = similar.length ? similar : fallback;
+
+        document.getElementById("similarGrid").innerHTML = data
+          .map(
+            (item) => `
+            <a class="similar-card" href="detail.html?id=${item.id}&source=${currentSource}">
+              <img src="${item.image}" alt="${item.name}" />
+              <div class="similar-info">
+                <h6>${item.name}</h6>
+                <span>${formatCurrency(item.price)}</span>
+              </div>
+            </a>
+          `,
+          )
+          .join("");
+      }
+
+      function renderProduct(currentProduct) {
+        document.getElementById("img").src = currentProduct.image;
+        document.getElementById("img").alt = currentProduct.name;
+        document.getElementById("name").textContent = currentProduct.name;
+        document.getElementById("tag").textContent = currentProduct.tag;
+        document.getElementById("price").textContent = formatCurrency(currentProduct.price);
+        document.getElementById("oldPrice").textContent = currentProduct.oldPrice
+          ? formatCurrency(currentProduct.oldPrice)
+          : "";
+        document.getElementById("desc").textContent = currentProduct.desc;
+        document.getElementById(
+          "detailDesc",
+        ).textContent = `${currentProduct.desc} Thiết kế tập trung vào cảm giác êm chân, độ bám ổn định và độ bền cho lịch trình di chuyển hằng ngày.`;
+        document.getElementById("category").textContent = `Danh mục: ${currentProduct.category}`;
+        document.getElementById("rating").textContent = `Đánh giá: ${currentProduct.rating}/5`;
+        document.getElementById("season").textContent = `Bộ sưu tập: ${currentProduct.season}`;
+
+        const toPage = currentSource === "women" ? "women.html" : "men.html";
+        document.getElementById("backLink").href = toPage;
+        document.getElementById("viewAllLink").href = toPage;
+
+        sizeContainer.innerHTML = currentProduct.sizes
+          .map((size) => `<button type="button" class="size-btn" data-size="${size}">EU ${size}</button>`)
+          .join("");
+
+        sizeContainer.querySelectorAll(".size-btn").forEach((button, idx) => {
+          button.addEventListener("click", () => {
+            sizeContainer.querySelectorAll(".size-btn").forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+            selectedSize = Number(button.dataset.size);
+            sizeError.textContent = "";
+          });
+          if (idx === 0) {
+            button.classList.add("active");
+            selectedSize = Number(button.dataset.size);
+          }
+        });
+
+        renderSimilarProducts(currentProduct);
+      }
+
+      function sanitizeQty(value) {
+        if (!Number.isFinite(value) || value < 1) return 1;
+        return Math.floor(value);
+      }
+
+      document.getElementById("incQty").addEventListener("click", () => {
+        qtyInput.value = sanitizeQty(Number(qtyInput.value) + 1);
+      });
+
+      document.getElementById("decQty").addEventListener("click", () => {
+        qtyInput.value = sanitizeQty(Number(qtyInput.value) - 1);
+      });
+
+      qtyInput.addEventListener("input", () => {
+        qtyInput.value = sanitizeQty(Number(qtyInput.value));
+      });
+
+      document.getElementById("addCart").addEventListener("click", () => {
+        if (!selectedSize) {
+          sizeError.textContent = "Vui lòng chọn size trước khi thêm vào giỏ.";
+          return;
+        }
+
+        const qty = sanitizeQty(Number(qtyInput.value));
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existing = cart.find((item) => item.id === product.id && item.size === selectedSize);
+
+        if (existing) {
+          existing.qty += qty;
+        } else {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            img: product.image,
+            size: selectedSize,
+            qty,
+            source: currentSource,
+          });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showToast("Đã thêm sản phẩm vào giỏ hàng");
+      });
+
+      if (!product) {
+        renderNotFound();
+      } else {
+        renderProduct(product);
+      }
+      $(document).ready(function() {
+            // Kiểm tra trạng thái đăng nhập
+            let isLogin = localStorage.getItem("isLogin");
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            if (isLogin === "true" && currentUser) {
+                $("#auth-links").html(`
+                    <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
+                    <a href="#" id="btnLogout">Đăng xuất</a>
+                `);
+            }
+
+            // Xử lý đăng xuất
+            $(document).on("click", "#btnLogout", function(e) {
+                e.preventDefault();
+                localStorage.removeItem("isLogin");
+                localStorage.removeItem("currentUser");
+                alert("Đã đăng xuất!");
+                location.reload();
+            });
+        });
+    </script>
+  </body>
+</html>
