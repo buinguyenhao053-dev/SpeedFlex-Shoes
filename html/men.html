@@ -97,6 +97,8 @@
       .hero-visual {
         width: 100%;
         border-radius: 28px;
+        position: relative;
+        overflow: hidden;
         background:
           radial-gradient(
             circle at top right,
@@ -118,6 +120,8 @@
 
       .stat-card {
         align-self: flex-end;
+        position: relative;
+        z-index: 2;
         background: rgba(255, 255, 255, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.65);
         border-radius: 20px;
@@ -138,12 +142,27 @@
       }
 
       .shoe-art {
-        align-self: center;
-        width: min(380px, 100%);
-        aspect-ratio: 1.1;
-        position: relative;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         filter: drop-shadow(0 26px 32px rgba(17, 17, 17, 0.22));
-      }
+        pointer-events: none;
+}
+
+      .shoe-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        /* transform: rotate(-8deg) scale(1.05); */
+        transition: 0.4s ease;
+}
 
       .shoe-base,
       .shoe-sole,
@@ -238,12 +257,21 @@
         gap: 18px;
         font-size: 14px;
         color: #333;
+        position: relative;
+        z-index: 2;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.62);
+        box-shadow: 0 8px 20px rgba(17, 17, 17, 0.08);
       }
 
       .hero-note strong {
         display: block;
         font-size: 16px;
         margin-bottom: 4px;
+        color: #111;
       }
 
       .feature-strip,
@@ -589,12 +617,39 @@
       }
 
       .add-btn {
-        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(17, 17, 17, 0.15);
         border-radius: 999px;
         padding: 12px 18px;
-        background: #111;
+        background: linear-gradient(135deg, #111 0%, #2f2f2f 100%);
         color: #fff;
         font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 10px 18px rgba(17, 17, 17, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      }
+
+      .add-btn::after {
+        content: "→";
+        font-size: 14px;
+        transition: transform 0.2s ease;
+      }
+
+      .add-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 24px rgba(17, 17, 17, 0.24);
+        filter: brightness(1.05);
+      }
+
+      .add-btn:hover::after {
+        transform: translateX(2px);
+      }
+
+      .add-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 8px 14px rgba(17, 17, 17, 0.2);
       }
 
       .empty-state {
@@ -773,10 +828,10 @@
     </div>
 
     <header>
-      <a href="index.html" class="logo">HAO SHOES</a>
+      <a href="../index.html" class="logo">HAO SHOES</a>
 
       <nav>
-        <a href="index.html">Trang chủ</a>
+        <a href="../index.html">Trang chủ</a>
         <a href="about.html">Thương hiệu</a>
         <a href="men.html">Nam</a>
         <a href="women.html">Nữ</a>
@@ -816,14 +871,11 @@
               </div>
 
               <div class="shoe-art" aria-hidden="true">
-                <div class="shoe-shadow"></div>
-                <div class="shoe-base"></div>
-                <div class="shoe-sole"></div>
-                <div class="shoe-detail one"></div>
-                <div class="shoe-detail two"></div>
-                <div class="shoe-lace lace-1"></div>
-                <div class="shoe-lace lace-2"></div>
-                <div class="shoe-lace lace-3"></div>
+                <img
+                  src="../img/men-hero-panel.png"
+                  alt=""
+                  class="shoe-img"
+                />
               </div>
 
               <div class="hero-note">
@@ -1014,153 +1066,8 @@
 
     <div class="toast-note" id="toastNote">Đã cập nhật giỏ hàng</div>
 
-    <script>
-      const products = [
-        {
-          id: "n1",
-          name: "Nike Air Max 95 Big Bubble",
-          category: "Lifestyle",
-          price: 4999000,
-          oldPrice: 0,
-          rating: 4.8,
-          tag: "Hot",
-          season: 2026,
-          image: "../img/W+NIKE+AIR+MAX+95+BIG+BUBBLE.jpg",
-          desc: "Thiết kế cổ điển với công nghệ Air nổi bật, mang lại cảm giác êm ái.",
-          sizes: [39, 40, 41, 42, 43],
-        },
-        {
-          id: "n2",
-          name: "Nike Air Force 1 '07",
-          category: "Lifestyle",
-          price: 3239000,
-          oldPrice: 0,
-          rating: 4.9,
-          tag: "Best seller",
-          season: 2026,
-          image: "../img/AIR+FORCE+1+'07.jpg",
-          desc: "Mẫu giày huyền thoại với thiết kế đơn giản, dễ phối đồ.",
-          sizes: [38, 39, 40, 41, 42, 43],
-        },
-        {
-          id: "n3",
-          name: "Nike ACG Pegasus Trail",
-          category: "Outdoor",
-          price: 4109000,
-          oldPrice: 0,
-          rating: 4.7,
-          tag: "Trail",
-          season: 2026,
-          image: "../img/NIKE+ACG+PEGASUS+TRAIL.jpg",
-          desc: "Thiết kế chuyên dụng cho địa hình, đế bám tốt và chống trượt.",
-          sizes: [40, 41, 42, 43, 44],
-        },
-        {
-          id: "n4",
-          name: "Air Jordan 1 Mid SE",
-          category: "Basketball",
-          price: 3959000,
-          oldPrice: 0,
-          rating: 4.9,
-          tag: "Classic",
-          season: 2026,
-          image: "../img/AIR+JORDAN+1+MID+SE.jpg",
-          desc: "Phong cách bóng rổ cổ điển, biểu tượng của Jordan.",
-          sizes: [39, 40, 41, 42, 43],
-        },
-        {
-          id: "n5",
-          name: "Jordan Spizike G",
-          category: "Lifestyle",
-          price: 5589000,
-          oldPrice: 0,
-          rating: 4.6,
-          tag: "Premium",
-          season: 2026,
-          image: "../img/JORDAN+SPIZIKE+G.jpg",
-          desc: "Thiết kế kết hợp nhiều dòng Jordan, tạo điểm nhấn độc đáo.",
-          sizes: [40, 41, 42, 43, 44],
-        },
-        {
-          id: "n6",
-          name: "Jordan Sixty Plus Low",
-          category: "Lifestyle",
-          price: 4849000,
-          oldPrice: 0,
-          rating: 4.6,
-          tag: "Retro",
-          season: 2025,
-          image: "../img/JORDAN+SIXTY+PLUS+LOW.jpg",
-          desc: "Lấy cảm hứng từ các cột mốc 60 điểm của Michael Jordan.",
-          sizes: [40, 41, 42, 43],
-        },
-        {
-          id: "n7",
-          name: "Nike Pegasus 42",
-          category: "Running",
-          price: 3829000,
-          oldPrice: 0,
-          rating: 4.8,
-          tag: "Running",
-          season: 2026,
-          image: "../img/AIR+ZOOM+PEGASUS+42.jpg",
-          desc: "Giày chạy nhẹ, đệm tốt, phù hợp luyện tập hằng ngày.",
-          sizes: [39, 40, 41, 42, 43],
-        },
-        {
-          id: "n8",
-          name: "Nike Dunk Low Retro SE",
-          category: "Lifestyle",
-          price: 3519000,
-          oldPrice: 0,
-          rating: 4.7,
-          tag: "Street",
-          season: 2026,
-          image: "../img/NIKE+DUNK+LOW+RETRO+SE.jpg",
-          desc: "Phong cách streetwear trẻ trung, dễ phối outfit.",
-          sizes: [39, 40, 41, 42],
-        },
-        {
-          id: "n9",
-          name: "Nike Shox Ride 2",
-          category: "Running",
-          price: 4999000,
-          oldPrice: 0,
-          rating: 4.7,
-          tag: "Tech",
-          season: 2025,
-          image: "../img/NIKE+SHOX+RIDE+2.jpg",
-          desc: "Công nghệ Shox độc đáo giúp hấp thụ lực và tăng độ nảy.",
-          sizes: [40, 41, 42, 43],
-        },
-        {
-          id: "n10",
-          name: "Nike Zoom Vomero 5 SE",
-          category: "Running",
-          price: 4999999,
-          oldPrice: 0,
-          rating: 4.9,
-          tag: "Premium",
-          season: 2026,
-          image: "../img/NIKE+ZOOM+VOMERO+5+SE.jpg",
-          desc: "Đệm Zoom cao cấp, mang lại trải nghiệm chạy êm ái tối đa.",
-          sizes: [39, 40, 41, 42, 43],
-        },
-        {
-          id: "n12",
-          name: "Nike Air Huarache",
-          category: "Lifestyle",
-          price: 3300000,
-          oldPrice: 3600000,
-          rating: 4.6,
-          tag: "Unique",
-          season: 2025,
-          image:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/air-huarache-shoes.png",
-          desc: "Thiết kế độc đáo ôm chân cực tốt.",
-          sizes: [40, 41, 42, 43],
-        },
-      ];
+    <script type="module">
+      import { menProducts } from "../js/products.js";
 
       const state = {
         query: "",
@@ -1173,11 +1080,11 @@
 
       const categoryFilters = [
         "all",
-        ...new Set(products.map((product) => product.category)),
+        ...new Set(menProducts.map((product) => product.category)),
       ];
       const sizeFilters = [
         "all",
-        ...new Set(products.flatMap((product) => product.sizes)),
+        ...new Set(menProducts.flatMap((product) => product.sizes)),
       ].sort((a, b) => {
         if (a === "all") return -1;
         if (b === "all") return 1;
@@ -1234,7 +1141,7 @@
       }
 
       function getFilteredProducts() {
-        let filtered = products.filter((product) => {
+        let filtered = menProducts.filter((product) => {
           const matchesQuery =
             product.name.toLowerCase().includes(state.query) ||
             product.category.toLowerCase().includes(state.query);
@@ -1320,10 +1227,6 @@
           })
           .join("");
 
-        productGridEl.querySelectorAll(".add-btn").forEach((button) => {
-          button.addEventListener("click", () => addToCart(button.dataset.id));
-        });
-
         productGridEl.querySelectorAll(".wishlist-btn").forEach((button) => {
           button.addEventListener("click", () =>
             toggleWishlist(button.dataset.id),
@@ -1349,7 +1252,7 @@
           sizeFilters,
           state.size,
           (value) => {
-            state.size = value;
+            state.size = value === "all" ? "all" : Number(value);
             renderFilters();
             renderProducts();
           },
@@ -1357,27 +1260,6 @@
         );
 
         priceLabelEl.textContent = `Dưới ${formatCurrency(state.price)}`;
-      }
-
-      function addToCart(productId) {
-        const product = products.find((item) => item.id === productId);
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const existing = cart.find((item) => item.id === product.id);
-
-        if (existing) {
-          existing.qty += 1;
-        } else {
-          cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            qty: 1,
-            img: "",
-          });
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-        showToast(`Đã thêm "${product.name}" vào giỏ`);
       }
 
       function toggleWishlist(productId) {
