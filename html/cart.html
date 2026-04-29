@@ -191,7 +191,7 @@
           </div>
         </section>
 
-        <aside class="panel summary"
+        <aside class="panel summary">
           <h5>Tóm tắt đơn hàng</h5>
           <div class="summary-line">
             <span>Tạm tính</span>
@@ -275,7 +275,10 @@
             <div>
               <h3 class="item-name">${item.name}</h3>
               <div class="item-meta">Size: EU ${item.size || "-"} ${item.source ? `• ${item.source === "women" ? "Nữ" : "Nam"}` : ""}</div>
-              <div class="item-price">${formatCurrency(item.price)}</div>
+              <div class="item-price">
+                ${formatCurrency(item.price)}
+                ${item.oldPrice && item.oldPrice > item.price ? `<span style="margin-left:6px;color:#8d8d8d;font-size:13px;text-decoration:line-through;">${formatCurrency(item.oldPrice)}</span>` : ""}
+              </div>
             </div>
             <div class="text-end">
               <div class="qty-wrap">

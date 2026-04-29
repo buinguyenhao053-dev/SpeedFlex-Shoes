@@ -34,6 +34,11 @@ function formatCurrency(value) {
   return value.toLocaleString("vi-VN") + "đ";
 }
 
+function getDiscountPercent(product) {
+  if (!product.oldPrice || product.oldPrice <= product.price) return 0;
+  return Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+}
+
 function showToast(message) {
   toastNoteEl.textContent = message;
   toastNoteEl.classList.add("show");
@@ -122,11 +127,13 @@ function renderProducts() {
   productGridEl.innerHTML = filtered
     .map((product) => {
       const isLoved = state.wishlist.includes(product.id);
+      const discountPercent = getDiscountPercent(product);
+      const badgeText = discountPercent ? `-${discountPercent}%` : product.tag;
 
       return `
                     <article class="product-card">
                         <div class="product-media">
-                            <span class="product-badge">${product.tag}</span>
+                            <span class="product-badge">${badgeText}</span>
                             <button class="wishlist-btn ${isLoved ? "active" : ""}" type="button" data-id="${product.id}" aria-label="Yêu thích">
                                 ${isLoved ? "♥" : "♡"}
                             </button>
@@ -148,7 +155,7 @@ function renderProducts() {
                                     <span class="product-price">${formatCurrency(product.price)}</span>
                                     ${product.oldPrice ? `<span class="old-price">${formatCurrency(product.oldPrice)}</span>` : ""}
                                 </div>
-                                <a href="detail.html?id=${product.id}" class="add-btn">Xem chi tiết</a>
+                                <a href="detail.html?id=${product.id}&source=women" class="add-btn">Xem chi tiết</a>
                             </div>
                         </div>
                     </article>
