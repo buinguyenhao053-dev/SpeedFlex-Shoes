@@ -6,12 +6,178 @@
     <title>HAO SHOES - Trang Chủ</title>
 
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    /> -->
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/jquery-4.0.0.min.js"></script>
+    <style>
+      .hero-slider {
+        position: relative;
+        margin: 18px auto 28px;
+        width: min(1220px, calc(100% - 24px));
+        height: clamp(340px, 56vw, 520px);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 24px 44px rgba(17, 17, 17, 0.18);
+      }
+
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transform: scale(1.03);
+        pointer-events: none;
+        transition: opacity 0.75s ease, transform 1.2s ease;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+        z-index: 1;
+      }
+
+      .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: flex-end;
+        padding: clamp(18px, 3vw, 34px);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.6));
+      }
+
+      .hero-copy {
+        max-width: min(640px, 96%);
+        color: #fff;
+      }
+
+      .hero-copy .kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(6px);
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      .hero-copy h1 {
+        margin: 0 0 10px;
+        font-size: clamp(28px, 4.6vw, 54px);
+        line-height: 1.05;
+      }
+
+      .hero-copy p {
+        margin: 0 0 18px;
+        max-width: 560px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: clamp(14px, 1.55vw, 19px);
+      }
+
+      .hero-dots {
+        position: absolute;
+        left: 50%;
+        bottom: 14px;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+      }
+
+      .hero-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .hero-dot.active {
+        background: #fff;
+        transform: scale(1.15);
+      }
+
+      .news-section {
+        width: min(1220px, calc(100% - 24px));
+        margin: 12px auto 32px;
+      }
+
+      .news-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .news-head h2 {
+        margin: 0;
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .news-card {
+        background: #fff;
+        border-radius: 18px;
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        box-shadow: 0 10px 22px rgba(17, 17, 17, 0.06);
+        overflow: hidden;
+      }
+
+      .news-thumb {
+        height: 160px;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      .news-content {
+        padding: 14px;
+      }
+
+      .news-date {
+        display: inline-block;
+        font-size: 12px;
+        color: #6c6c6c;
+        margin-bottom: 8px;
+      }
+
+      .news-content h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .news-content p {
+        margin: 0 0 10px;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .news-content a {
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      @media (max-width: 992px) {
+        .news-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -36,11 +202,56 @@
         });
     </script>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h1>GIÀY HOT 2026</h1>
-        <p>Phong cách hiện đại - Giá cực tốt</p>
-        <a href="sale.html" class="my-btn">Mua ngay</a>
+    <section class="hero-slider" id="heroSlider">
+      <article class="hero-slide active">
+        <img src="./img/slider-banner1.png" alt="Giày chạy hiệu năng cao" />
+        <div class="hero-overlay">
+          <div class="hero-copy">
+            <span class="kicker">Performance Running</span>
+            <h1>Bứt tốc mỗi sải chân với công nghệ đệm mới.</h1>
+            <p>
+              Bộ sưu tập running 2026 tối ưu độ nảy, hỗ trợ lực và bám đường cho
+              mọi cường độ luyện tập.
+            </p>
+            <a href="./html/men.html" class="my-btn">Khám phá ngay</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="hero-slide">
+        <img src="./img/slider-banner2.png" alt="Bộ sưu tập giày lifestyle" />
+        <div class="hero-overlay">
+          <div class="hero-copy">
+            <span class="kicker">Lifestyle Essentials</span>
+            <h1>Phối outfit dễ dàng, nổi bật từng bước đi.</h1>
+            <p>
+              Tông màu trung tính hiện đại, thiết kế gọn gàng cho cả đi làm, đi
+              chơi và daily casual.
+            </p>
+            <a href="./html/women.html" class="my-btn">Xem bộ sưu tập</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="hero-slide">
+        <img src="./img/slider-banner3.png" alt="Trải nghiệm giày êm nhẹ" />
+        <div class="hero-overlay">
+          <div class="hero-copy">
+            <span class="kicker">Everyday Comfort</span>
+            <h1>Êm nhẹ cả ngày dài, linh hoạt mọi lịch trình.</h1>
+            <p>
+              Dòng giày đa dụng cân bằng hoàn hảo giữa hiệu năng thể thao và sự
+              thoải mái cho nhịp sống đô thị.
+            </p>
+            <a href="./html/sale.html" class="my-btn">Săn ưu đãi</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="hero-dots" id="heroDots">
+        <button type="button" class="hero-dot active" aria-label="Slide 1"></button>
+        <button type="button" class="hero-dot" aria-label="Slide 2"></button>
+        <button type="button" class="hero-dot" aria-label="Slide 3"></button>
       </div>
     </section>
 
@@ -52,6 +263,42 @@
     <section class="section">
       <h2>Giày Nữ Nổi Bật</h2>
       <div class="products" id="womenFeatured"></div>
+    </section>
+
+    <section class="news-section">
+      <div class="news-head">
+        <h2>Tin tức nổi bật</h2>
+        <a href="#" class="my-btn">Xem thêm</a>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <img class="news-thumb" src="./img/sneaker_trends.jpg" alt="Xu hướng sneaker" />
+          <div class="news-content">
+            <span class="news-date">29/04/2026</span>
+            <h3>5 xu hướng sneaker nổi bật 2026</h3>
+            <p>Từ phối màu trung tính đến form chunky tối giản, khám phá các mẫu đang được săn đón nhất.</p>
+            <a href="#">Đọc bài viết →</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <img class="news-thumb" src="./img/size_guild.png" alt="Hướng dẫn chọn size giày" />
+          <div class="news-content">
+            <span class="news-date">26/04/2026</span>
+            <h3>Chọn size giày chuẩn theo form chân</h3>
+            <p>Mẹo đo chân tại nhà và cách chọn size nhanh để mang êm ngay từ lần đầu tiên.</p>
+            <a href="#">Đọc bài viết →</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <img class="news-thumb" src="./img/style_tips.png" alt="Mẹo phối đồ với giày" />
+          <div class="news-content">
+            <span class="news-date">22/04/2026</span>
+            <h3>Mix đồ với sneaker trắng không nhàm chán</h3>
+            <p>Gợi ý outfit nam/nữ ứng dụng cao, dễ mặc đi làm, đi chơi và dạo phố cuối tuần.</p>
+            <a href="#">Đọc bài viết →</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <div id="shared-footer"></div>
@@ -122,6 +369,27 @@
 
       renderFeaturedProducts("menFeatured", menProducts, "men");
       renderFeaturedProducts("womenFeatured", womenProducts, "women");
+
+      const slides = [...document.querySelectorAll(".hero-slide")];
+      const dots = [...document.querySelectorAll(".hero-dot")];
+      let currentSlide = 0;
+
+      function setSlide(index) {
+        slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+        dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        setSlide(next);
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => setSlide(index));
+      });
+
+      setInterval(nextSlide, 4200);
     </script>
   </body>
 </html>
