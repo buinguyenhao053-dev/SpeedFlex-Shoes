@@ -141,6 +141,7 @@
             id: product.id,
             name: product.name,
             price: product.price,
+            oldPrice: product.oldPrice || 0,
             img: product.image,
             size: selectedSize,
             qty,
