@@ -1,141 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAO SHOES - Trang Chủ</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAO SHOES - Trang Chủ</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="../css/style.css">
-<script src="../js/jquery-4.0.0.min.js"></script>
-</head>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/jquery-4.0.0.min.js"></script>
+  </head>
 
-<body>
+  <body>
+    <div id="shared-header"></div>
+    <script>
+      fetch("../compones/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-header");
+          host.innerHTML = html;
 
-    <div class="topbar">
-        <div>Miễn phí vận chuyển toàn quốc</div>
-
-        <div id="auth-links">
-            <a href="login.html">Đăng nhập</a>
-            <a href="register.html">Đăng ký</a>
-        </div>
-    </div>
-
-<header>
-
-    <a href="index.html" class="logo">HAO SHOES</a>
-
-    <nav>
-        <a href="index.html">Trang chủ</a>
-        <a href="about.html">Thương hiệu</a>
-        <a href="html/men.html">Nam</a>
-        <a href="women.html">Nữ</a>
-        <a href="sale.html">Đang Sale</a>
-        
-        <div class="search">
-            <input type="text" placeholder="Tìm kiếm...">
-            <i class="fa fa-search"></i>
-        </div>
-    </nav>
-
-    <div class="icons">
-        <a href="sale.html" class="my-btn sale-btn">Xem Sale</a>
-        <a href="cart.html"><i class="fa fa-cart-shopping"></i></a>
-    </div>
-
-</header>
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>GIÀY HOT 2026</h1>
-            <p>Phong cách hiện đại - Giá cực tốt</p>
-            <a href="sale.html" class="my-btn">Mua ngay</a>
-        </div>
+      <div class="hero-content">
+        <h1>GIÀY HOT 2026</h1>
+        <p>Phong cách hiện đại - Giá cực tốt</p>
+        <a href="sale.html" class="my-btn">Mua ngay</a>
+      </div>
     </section>
 
     <section class="section">
-        <h2>Giày Nam Nổi Bật</h2>
-        <div class="products" id="menFeatured"></div>
+      <h2>Giày Nam Nổi Bật</h2>
+      <div class="products" id="menFeatured"></div>
     </section>
 
     <section class="section">
-        <h2>Giày Nữ Nổi Bật</h2>
-        <div class="products" id="womenFeatured"></div>
+      <h2>Giày Nữ Nổi Bật</h2>
+      <div class="products" id="womenFeatured"></div>
     </section>
 
-    <section class="newsletter">
-        <h2>Kết nối với chúng tôi</h2>
-        <p>Nhập email để nhận ưu đãi mới nhất</p>
-        <br>
-        <input type="email" placeholder="Nhập email">
-        <button>Đăng ký</button>
-    </section>
+    <div id="shared-footer"></div>
+    <script>
+      fetch("../compones/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-footer");
+          host.innerHTML = html;
 
-    <footer>
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) newScript.src = oldScript.src;
+            else newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
+    <script>
+      $(document).ready(function () {
+        // Kiểm tra trạng thái đăng nhập
+        let isLogin = localStorage.getItem("isLogin");
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    <div class="footer-grid">
-        <div>
-            <h4>Thông tin shop</h4>
-            <p>Địa chỉ: TP.HCM</p>
-            <p>SĐT: 0909999999</p>
-            <p>Email: haoshoes@gmail.com</p>
-        </div>
-
-        <div>
-            <h4>Chính sách khách hàng</h4>
-            <p>Hướng dẫn đặt hàng</p>
-            <p>Bảo hành</p>
-            <p>Đổi hàng</p>
-            <p>Thanh toán</p>
-        </div>
-
-        <div>
-            <h4>Giới thiệu</h4>
-            <p>Thành lập 2026</p>
-            <p>Shop giày thời trang</p>
-            </div>
-    </div>
-    <p class="copy">© 2026 HAO SHOES STORE</p>
-    </footer>
-<script>
-        $(document).ready(function() {
-            // Kiểm tra trạng thái đăng nhập
-            let isLogin = localStorage.getItem("isLogin");
-            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-            if (isLogin === "true" && currentUser) {
-                $("#auth-links").html(`
+        if (isLogin === "true" && currentUser) {
+          $("#auth-links").html(`
                     <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
                     <a href="#" id="btnLogout">Đăng xuất</a>
                 `);
-            }
+        }
 
-            // Xử lý đăng xuất
-            $(document).on("click", "#btnLogout", function(e) {
-                e.preventDefault();
-                localStorage.removeItem("isLogin");
-                localStorage.removeItem("currentUser");
-                alert("Đã đăng xuất!");
-                location.reload();
-            });
+        // Xử lý đăng xuất
+        $(document).on("click", "#btnLogout", function (e) {
+          e.preventDefault();
+          localStorage.removeItem("isLogin");
+          localStorage.removeItem("currentUser");
+          alert("Đã đăng xuất!");
+          location.reload();
         });
-</script>   
-<script type="module">
-    import { menProducts, womenProducts } from "./js/products.js";
+      });
+    </script>
+    <script type="module">
+      import { menProducts, womenProducts } from "./js/products.js";
 
-    function formatCurrency(value) {
+      function formatCurrency(value) {
         return value.toLocaleString("vi-VN") + "₫";
-    }
+      }
 
-    function renderFeaturedProducts(containerId, products, source) {
+      function renderFeaturedProducts(containerId, products, source) {
         const container = document.getElementById(containerId);
         if (!container) return;
 
         container.innerHTML = products
-            .slice(0, 4)
-            .map(
-                (product) => `
+          .slice(0, 4)
+          .map(
+            (product) => `
                     <div class="card">
                         <img src="${product.image}" alt="${product.name}">
                         <h3>${product.name}</h3>
@@ -143,12 +116,12 @@
                         <a href="./html/detail.html?id=${product.id}&source=${source}" class="my-btn">Xem chi tiết</a>
                     </div>
                 `,
-            )
-            .join("");
-    }
+          )
+          .join("");
+      }
 
-    renderFeaturedProducts("menFeatured", menProducts, "men");
-    renderFeaturedProducts("womenFeatured", womenProducts, "women");
-</script>
-</body>
+      renderFeaturedProducts("menFeatured", menProducts, "men");
+      renderFeaturedProducts("womenFeatured", womenProducts, "women");
+    </script>
+  </body>
 </html>

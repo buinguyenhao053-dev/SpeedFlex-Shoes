@@ -1,0 +1,288 @@
+<style>
+  .hf-footer {
+    margin-top: 52px;
+    position: relative;
+    overflow: hidden;
+    color: #f4f4f4;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(254, 208, 129, 0.22), transparent 34%),
+      radial-gradient(circle at 82% 4%, rgba(106, 138, 255, 0.18), transparent 36%),
+      linear-gradient(170deg, #1d1d1d, #0f0f0f 70%);
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .hf-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 35%, rgba(255, 255, 255, 0.03));
+    pointer-events: none;
+  }
+
+  .hf-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 46px 24px 20px;
+  }
+
+  .hf-top {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 18px;
+    align-items: stretch;
+    margin-bottom: 18px;
+  }
+
+  .hf-cta,
+  .hf-subscribe {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 18px 18px;
+  }
+
+  .hf-cta h3 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    letter-spacing: 0.3px;
+  }
+
+  .hf-cta p {
+    margin: 0;
+    color: #d7d7d7;
+    line-height: 1.6;
+  }
+
+  .hf-subscribe h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+  }
+
+  .hf-subscribe-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .hf-subscribe-row input {
+    flex: 1;
+    min-width: 140px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 14px;
+    outline: none;
+  }
+
+  .hf-subscribe-row input::placeholder {
+    color: #b9b9b9;
+  }
+
+  .hf-subscribe-row button {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 700;
+    color: #111;
+    background: linear-gradient(135deg, #ffd58e, #eeb663);
+    transition: 0.2s ease;
+  }
+
+  .hf-subscribe-row button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+  }
+
+  .hf-grid {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .hf-brand {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .hf-brand::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    width: 64px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ffd58e, #fff1cf);
+  }
+
+  .hf-desc {
+    margin: 0;
+    color: #cfcfcf;
+    line-height: 1.75;
+  }
+
+  .hf-col h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+  }
+
+  .hf-col a,
+  .hf-col p {
+    display: block;
+    margin: 0 0 9px;
+    color: #d7d7d7;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s ease;
+  }
+
+  .hf-col a:hover {
+    color: #fff;
+    transform: translateX(2px);
+  }
+
+  .hf-social {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .hf-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.22s ease;
+  }
+
+  .hf-social a:hover {
+    background: #ffd58e;
+    color: #111;
+    border-color: #ffd58e;
+    transform: translateY(-2px);
+  }
+
+  .hf-bottom {
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    color: #bbbbbb;
+    font-size: 13px;
+  }
+
+  @media (max-width: 992px) {
+    .hf-top {
+      grid-template-columns: 1fr;
+    }
+    .hf-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .hf-grid {
+      grid-template-columns: 1fr;
+    }
+    .hf-subscribe-row {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<footer class="hf-footer">
+  <div class="hf-wrap">
+    <div class="hf-top">
+      <div class="hf-cta">
+        <h3>Step Into Better Style</h3>
+        <p>
+          Từ daily wear đến training - HAO SHOES mang đến trải nghiệm êm chân,
+          bền bỉ và linh hoạt cho từng nhịp chuyển động.
+        </p>
+      </div>
+      <div class="hf-subscribe">
+        <h4>Nhận ưu đãi mới mỗi tuần</h4>
+        <div class="hf-subscribe-row">
+          <input type="email" placeholder="Email của bạn" />
+          <button type="button">Theo dõi</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hf-grid">
+      <div>
+        <div class="hf-brand">HAO SHOES</div>
+        <p class="hf-desc">
+          Định hình phong cách sneaker hiện đại qua từng bộ sưu tập nam và nữ,
+          cân bằng giữa thời trang và hiệu năng sử dụng thực tế.
+        </p>
+        <div class="hf-social">
+          <a href="#" aria-label="Facebook">Fb</a>
+          <a href="#" aria-label="Instagram">Ig</a>
+          <a href="#" aria-label="TikTok">Tk</a>
+          <a href="#" aria-label="Youtube">Yt</a>
+        </div>
+      </div>
+
+      <div class="hf-col">
+        <h4>Sản phẩm</h4>
+        <a id="hf-men-link" href="#">Giày Nam</a>
+        <a id="hf-women-link" href="#">Giày Nữ</a>
+        <a id="hf-sale-link" href="#">Đang Sale</a>
+      </div>
+
+      <div class="hf-col">
+        <h4>Hỗ trợ khách hàng</h4>
+        <a href="#">Hướng dẫn đặt hàng</a>
+        <a href="#">Vận chuyển & giao nhận</a>
+        <a href="#">Chính sách bảo hành</a>
+        <a href="#">Đổi trả sản phẩm</a>
+      </div>
+
+      <div class="hf-col">
+        <h4>Liên hệ</h4>
+        <p>Trụ sở: TP.HCM, Việt Nam</p>
+        <p>Hotline: 0909 999 999</p>
+        <p>Email: haoshoes@gmail.com</p>
+        <p>Thời gian: 8:00 - 22:00 (T2 - CN)</p>
+      </div>
+    </div>
+
+    <div class="hf-bottom">
+      <span>© 2026 HAO SHOES STORE. All rights reserved.</span>
+      <span>Designed for modern movement.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const inHtmlFolder = window.location.pathname.includes("/html/");
+    const links = inHtmlFolder
+      ? { men: "men.html", women: "women.html", sale: "sale.html" }
+      : { men: "html/men.html", women: "html/women.html", sale: "html/sale.html" };
+
+    document.getElementById("hf-men-link").href = links.men;
+    document.getElementById("hf-women-link").href = links.women;
+    document.getElementById("hf-sale-link").href = links.sale;
+  })();
+</script>
