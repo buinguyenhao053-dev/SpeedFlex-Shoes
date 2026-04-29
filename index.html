@@ -56,72 +56,12 @@
 
     <section class="section">
         <h2>Giày Nam Nổi Bật</h2>
-
-        <div class="products">
-            <div class="card">
-                <img src="../img/shoe1.png">
-                <h3>Nike Free Metcon 7</h3>
-                <p>2.490.000₫</p>
-                <a href="./html/detail.html" class="my-btn">Mua</a>
-            </div>
-
-            <div class="card">
-                <img src="../img/shoe2.png">
-                <h3>Nike Free Metcon 7</h3>
-                <p>2.890.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
-            </div>
-
-            <div class="card">
-                <img src="../img/shoe3.png">
-                <h3>Nike Structure Plus</h3>
-                <p>3.990.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
-            </div>
-
-            <div class="card">
-                <img src="../img/shoe4.png">
-                <h3>Nike Structure 26</h3>
-                <p>3.190.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
-            </div>
-
-        </div>
+        <div class="products" id="menFeatured"></div>
     </section>
 
     <section class="section">
         <h2>Giày Nữ Nổi Bật</h2>
-
-        <div class="products">
-            <div class="card">
-                <img src="../img/shoe5.png">
-                <h3>Nike Free Metcon 7 SE</h3>
-                <p>2.290.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
-            </div>
-
-            <div class="card">
-                <img src="../img/shoe6.png">
-                <h3>Nike Free Metcon 7</h3>
-                <p>2.590.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
-            </div>
-
-            <div class="card">
-                <img src="../img/shoe7.png">
-                <h3>Air Jordan 1 Low</h3>
-                <p>2.790.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
-            </div>
-
-            <div class="card">
-                <img src="../img/shoe8.png">
-                <h3>Air Jordan 1 Triple Stack</h3>
-                <p>2.990.000₫</p>
-                <a href="detail.html" class="my-btn">Mua</a>
-            </div>
-
-        </div>
+        <div class="products" id="womenFeatured"></div>
     </section>
 
     <section class="newsletter">
@@ -181,5 +121,34 @@
             });
         });
 </script>   
+<script type="module">
+    import { menProducts, womenProducts } from "./js/products.js";
+
+    function formatCurrency(value) {
+        return value.toLocaleString("vi-VN") + "₫";
+    }
+
+    function renderFeaturedProducts(containerId, products, source) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = products
+            .slice(0, 4)
+            .map(
+                (product) => `
+                    <div class="card">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>${formatCurrency(product.price)}</p>
+                        <a href="./html/detail.html?id=${product.id}&source=${source}" class="my-btn">Xem chi tiết</a>
+                    </div>
+                `,
+            )
+            .join("");
+    }
+
+    renderFeaturedProducts("menFeatured", menProducts, "men");
+    renderFeaturedProducts("womenFeatured", womenProducts, "women");
+</script>
 </body>
 </html>
