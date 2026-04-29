@@ -236,10 +236,10 @@
   <body>
     <div class="topbar">
       <div>Miễn phí vận chuyển toàn quốc</div>
-      <div>
-        <a href="login.html">Đăng nhập</a>
-        <a href="register.html">Đăng ký</a>
-      </div>
+        <div id="auth-links">
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
+        </div>
     </div>
 
     <header>
@@ -499,6 +499,27 @@
       } else {
         renderProduct(product);
       }
+      $(document).ready(function() {
+            // Kiểm tra trạng thái đăng nhập
+            let isLogin = localStorage.getItem("isLogin");
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            if (isLogin === "true" && currentUser) {
+                $("#auth-links").html(`
+                    <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
+                    <a href="#" id="btnLogout">Đăng xuất</a>
+                `);
+            }
+
+            // Xử lý đăng xuất
+            $(document).on("click", "#btnLogout", function(e) {
+                e.preventDefault();
+                localStorage.removeItem("isLogin");
+                localStorage.removeItem("currentUser");
+                alert("Đã đăng xuất!");
+                location.reload();
+            });
+        });
     </script>
   </body>
 </html>

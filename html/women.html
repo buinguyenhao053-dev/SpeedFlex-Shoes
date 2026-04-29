@@ -652,10 +652,10 @@
   <body class="women-page">
     <div class="topbar">
       <div>Miễn phí vận chuyển toàn quốc</div>
-      <div>
-        <a href="login.html">Đăng nhập</a>
-        <a href="register.html">Đăng ký</a>
-      </div>
+      <div id="auth-links">
+            <a href="login.html">Đăng nhập</a>
+            <a href="register.html">Đăng ký</a>
+        </div>
     </div>
 
     <header>
@@ -1145,6 +1145,38 @@
 
       renderFilters();
       renderProducts();
+
+      function updateAuthUI() {
+        const auth = document.getElementById("auth-links");
+
+        const isLogin = localStorage.getItem("isLogin") === "true";
+        const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+
+        if (isLogin && currentUser) {
+          auth.innerHTML = `
+            <span style="color:#1b8f3a; margin-right:10px;">
+              Chào, ${currentUser.hoten}
+            </span>
+            <a href="#" id="btnLogout">Đăng xuất</a>
+          `;
+        } else {
+          auth.innerHTML = `
+          <a href="login.html">Đăng nhập</a>
+          <a href="register.html">Đăng ký</a>
+          `;
+        }
+}
+
+        updateAuthUI();
+
+        document.addEventListener("click", function (e) {
+        if (e.target && e.target.id === "btnLogout") {
+          e.preventDefault();
+          localStorage.removeItem("isLogin");
+          localStorage.removeItem("currentUser");
+          updateAuthUI();
+        }
+});
     </script>
   </body>
 </html>

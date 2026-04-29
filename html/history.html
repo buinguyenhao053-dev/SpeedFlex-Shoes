@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/style.css">
+<script src="../js/jquery-4.0.0.min.js"></script>
 
 <style>
 .order-card {
@@ -40,10 +41,10 @@
 
 <div class="topbar">
   <div>Miễn phí vận chuyển toàn quốc</div>
-  <div>
-    <a href="login.html">Đăng nhập</a>
-    <a href="register.html">Đăng ký</a>
-  </div>
+    <div id="auth-links">
+      <a href="login.html">Đăng nhập</a>
+      <a href="register.html">Đăng ký</a>
+    </div>
 </div>
 
 <header>
@@ -101,12 +102,10 @@
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
 function renderOrders(){
-  let html = "";
-
   const list = document.getElementById("order-list");
   const empty = document.getElementById("empty");
 
-  if(orders.length === 0){
+  if(!orders || orders.length === 0){
     empty.classList.remove("d-none");
     list.innerHTML = "";
     return;
@@ -114,15 +113,19 @@ function renderOrders(){
 
   empty.classList.add("d-none");
 
+  let html = "";
+
   orders.slice().reverse().forEach(order => {
 
     let itemsHTML = "";
 
-    order.items.forEach(item => {
+    (order.items || []).forEach(item => {
+      const price = item.price || 0;
+
       itemsHTML += `
         <div class="order-item">
-          <span>${item.name} (Size ${item.size}) x${item.qty}</span>
-          <span>${(item.priceNumber * item.qty).toLocaleString()}₫</span>
+          <span>${item.name} (Size ${item.size || "-"}) x${item.qty}</span>
+          <span>${(price * item.qty).toLocaleString()}₫</span>
         </div>
       `;
     });
@@ -131,12 +134,12 @@ function renderOrders(){
       <div class="order-card shadow-sm">
         <div class="order-header">
           <div>
-            <strong>${order.name}</strong><br>
-            ${order.phone}<br>
-            ${order.address}
+            <strong>${order.name || ""}</strong><br>
+            ${order.phone || ""}<br>
+            ${order.address || ""}
           </div>
           <div class="text-end">
-            <small>${order.date}</small>
+            <small>${order.date || ""}</small>
           </div>
         </div>
 
@@ -147,7 +150,7 @@ function renderOrders(){
         <hr>
 
         <div class="order-total text-end">
-          Tổng: ${order.total.toLocaleString()}₫
+          Tổng: ${(order.total || 0).toLocaleString()}₫
         </div>
       </div>
     `;
@@ -157,6 +160,27 @@ function renderOrders(){
 }
 
 document.addEventListener("DOMContentLoaded", renderOrders);
+$(document).ready(function() {
+            // Kiểm tra trạng thái đăng nhập
+            let isLogin = localStorage.getItem("isLogin");
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            if (isLogin === "true" && currentUser) {
+                $("#auth-links").html(`
+                    <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
+                    <a href="#" id="btnLogout">Đăng xuất</a>
+                `);
+            }
+
+            // Xử lý đăng xuất
+            $(document).on("click", "#btnLogout", function(e) {
+                e.preventDefault();
+                localStorage.removeItem("isLogin");
+                localStorage.removeItem("currentUser");
+                alert("Đã đăng xuất!");
+                location.reload();
+            });
+        });
 </script>
 
 </body>
