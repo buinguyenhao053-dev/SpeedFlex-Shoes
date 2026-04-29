@@ -1,0 +1,48 @@
+/* Wrapper giữ vị trí (QUAN TRỌNG) */
+#spline-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 260px;
+  height: 260px;
+
+  z-index: 9999;
+  pointer-events: auto;
+
+  transform: none !important;
+}
+
+/* Canvas */
+#spline-robot {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Bubble chat */
+#spline-bubble {
+  position: fixed;
+  bottom: 240px;
+  right: 30px;
+
+  background: #111;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+
+  z-index: 10000;
+}
+
+/* Hiện bubble */
+#spline-bubble.show {
+  opacity: 1;
+  transform: translateY(0);
+}

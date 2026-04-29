@@ -12,7 +12,9 @@
     /> -->
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="../css/spline.css">
     <style>
+      
       .hero-slider {
         position: relative;
         margin: 18px auto 28px;
@@ -29,7 +31,9 @@
         opacity: 0;
         transform: scale(1.03);
         pointer-events: none;
-        transition: opacity 0.75s ease, transform 1.2s ease;
+        transition:
+          opacity 0.75s ease,
+          transform 1.2s ease;
       }
 
       .hero-slide.active {
@@ -51,7 +55,11 @@
         display: flex;
         align-items: flex-end;
         padding: clamp(18px, 3vw, 34px);
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.6));
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.08),
+          rgba(0, 0, 0, 0.6)
+        );
       }
 
       .hero-copy {
@@ -249,7 +257,11 @@
       </article>
 
       <div class="hero-dots" id="heroDots">
-        <button type="button" class="hero-dot active" aria-label="Slide 1"></button>
+        <button
+          type="button"
+          class="hero-dot active"
+          aria-label="Slide 1"
+        ></button>
         <button type="button" class="hero-dot" aria-label="Slide 2"></button>
         <button type="button" class="hero-dot" aria-label="Slide 3"></button>
       </div>
@@ -272,29 +284,50 @@
       </div>
       <div class="news-grid">
         <article class="news-card">
-          <img class="news-thumb" src="./img/sneaker_trends.jpg" alt="Xu hướng sneaker" />
+          <img
+            class="news-thumb"
+            src="./img/sneaker_trends.jpg"
+            alt="Xu hướng sneaker"
+          />
           <div class="news-content">
             <span class="news-date">29/04/2026</span>
             <h3>5 xu hướng sneaker nổi bật 2026</h3>
-            <p>Từ phối màu trung tính đến form chunky tối giản, khám phá các mẫu đang được săn đón nhất.</p>
+            <p>
+              Từ phối màu trung tính đến form chunky tối giản, khám phá các mẫu
+              đang được săn đón nhất.
+            </p>
             <a href="#">Đọc bài viết →</a>
           </div>
         </article>
         <article class="news-card">
-          <img class="news-thumb" src="./img/size_guild.png" alt="Hướng dẫn chọn size giày" />
+          <img
+            class="news-thumb"
+            src="./img/size_guild.png"
+            alt="Hướng dẫn chọn size giày"
+          />
           <div class="news-content">
             <span class="news-date">26/04/2026</span>
             <h3>Chọn size giày chuẩn theo form chân</h3>
-            <p>Mẹo đo chân tại nhà và cách chọn size nhanh để mang êm ngay từ lần đầu tiên.</p>
+            <p>
+              Mẹo đo chân tại nhà và cách chọn size nhanh để mang êm ngay từ lần
+              đầu tiên.
+            </p>
             <a href="#">Đọc bài viết →</a>
           </div>
         </article>
         <article class="news-card">
-          <img class="news-thumb" src="./img/style_tips.png" alt="Mẹo phối đồ với giày" />
+          <img
+            class="news-thumb"
+            src="./img/style_tips.png"
+            alt="Mẹo phối đồ với giày"
+          />
           <div class="news-content">
             <span class="news-date">22/04/2026</span>
             <h3>Mix đồ với sneaker trắng không nhàm chán</h3>
-            <p>Gợi ý outfit nam/nữ ứng dụng cao, dễ mặc đi làm, đi chơi và dạo phố cuối tuần.</p>
+            <p>
+              Gợi ý outfit nam/nữ ứng dụng cao, dễ mặc đi làm, đi chơi và dạo
+              phố cuối tuần.
+            </p>
             <a href="#">Đọc bài viết →</a>
           </div>
         </article>
@@ -375,7 +408,9 @@
       let currentSlide = 0;
 
       function setSlide(index) {
-        slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+        slides.forEach((slide, i) =>
+          slide.classList.toggle("active", i === index),
+        );
         dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
         currentSlide = index;
       }
@@ -391,5 +426,8 @@
 
       setInterval(nextSlide, 4200);
     </script>
+    <!-- <canvas id="canvas3d"></canvas> -->
+
+    <script type="module" src="../js/spline.js"></script>
   </body>
 </html>
