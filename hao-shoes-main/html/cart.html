@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giỏ hàng - HAO SHOES</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="../js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="topbar">
+    <div>Miễn phí vận chuyển toàn quốc</div>
+    <div>
+        <a href="login.html">Đăng nhập</a>
+        <a href="register.html">Đăng ký</a>
+    </div>
+</div>
+
+<header>
+    <a href="index.html" class="logo">HAO SHOES</a>
+
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="men.html">Nam</a>
+        <a href="women.html">Nữ</a>
+        <a href="sale.html">Sale</a>
+    </nav>
+
+    <div class="icons">
+        <a href="cart.html"><i class="fa fa-cart-shopping"></i></a>
+    </div>
+</header>
+
+<!-- CONTENT -->
+<div class="container py-5" style="max-width: 900px;">
+    <h2 class="text-center mb-4">Giỏ hàng</h2>
+
+    <h5 id="titleCart" class="mb-3">Sản phẩm của bạn</h5>
+
+    <div id="cart-list" class="row g-3"></div>
+
+    <div class="text-end mt-4">
+        <h4>Tổng tiền: <span id="total">0₫</span></h4>
+        <button class="btn btn-dark px-4 py-2" onclick="goCheckout()">Thanh toán</button>
+    </div>
+
+    <div id="empty" class="text-center mt-5 d-none">
+        <p>Giỏ hàng đang trống</p>
+        <a href="../index.html" class="btn btn-dark">Mua ngay</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>Thông tin shop</h4>
+            <p>Địa chỉ: TP.HCM</p>
+            <p>SĐT: 0909999999</p>
+            <p>Email: haoshoes@gmail.com</p>
+        </div>
+
+        <div>
+            <h4>Chính sách khách hàng</h4>
+            <p>Hướng dẫn đặt hàng</p>
+            <p>Bảo hành</p>
+            <p>Đổi hàng</p>
+            <p>Thanh toán</p>
+        </div>
+
+        <div>
+            <h4>Giới thiệu</h4>
+            <p>Thành lập 2026</p>
+            <p>Shop giày thời trang</p>
+        </div>
+    </div>
+    <p class="copy">© 2026 HAO SHOES STORE</p>
+</footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart(){
+    let html = "";
+    let total = 0;
+
+    const cartList = document.getElementById("cart-list");
+    const totalEl = document.getElementById("total");
+    const emptyEl = document.getElementById("empty");
+    const title = document.getElementById("titleCart");
+
+    if(cart.length === 0){
+        cartList.innerHTML = "";
+        totalEl.innerText = "0₫";
+        emptyEl.classList.remove("d-none");
+        title.style.display = "none";
+        return;
+    }
+
+    emptyEl.classList.add("d-none");
+    title.style.display = "block";
+
+    cart.forEach((item,i)=>{
+        total += item.price * item.qty;
+
+        html += `
+        <div class="col-12">
+            <div class="card p-3 shadow-sm">
+                <div class="d-flex align-items-center">
+
+                    <img src="${item.img}" width="80" height="80"
+                    style="object-fit:cover;border-radius:8px">
+
+                    <div class="ms-3 flex-grow-1">
+                        <h6>${item.name}</h6>
+                        <span class="text-danger fw-bold">
+                            ${item.price.toLocaleString()}₫
+                        </span>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-outline-dark btn-sm"
+                        onclick="changeQty(${i},-1)">-</button>
+
+                        <span class="mx-2">${item.qty}</span>
+
+                        <button class="btn btn-outline-dark btn-sm"
+                        onclick="changeQty(${i},1)">+</button>
+                    </div>
+
+                    <button class="btn btn-danger btn-sm ms-3"
+                    onclick="removeItem(${i})">
+                    <i class="fa fa-trash"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        `;
+    });
+
+    cartList.innerHTML = html;
+    totalEl.innerText = total.toLocaleString() + "₫";
+}
+
+function changeQty(i,v){
+    cart[i].qty += v;
+    if(cart[i].qty <= 0) cart.splice(i,1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+function removeItem(i){
+    cart.splice(i,1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+function goCheckout(){
+    if(cart.length === 0){
+        alert("Giỏ hàng đang trống");
+        return;
+    }
+    location.href = "checkout.html";
+}
+
+document.addEventListener("DOMContentLoaded", renderCart);
+</script>
+
+</body>
+</html>

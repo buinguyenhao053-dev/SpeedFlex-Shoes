@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thương hiệu - HAO SHOES</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      body {
+        background: linear-gradient(180deg, #f9f6f2 0%, #f3eee7 100%);
+      }
+
+      .brand-shell {
+        width: min(1220px, calc(100% - 24px));
+        margin: 18px auto 36px;
+      }
+
+      .brand-hero {
+        min-height: 480px;
+        border-radius: 28px;
+        overflow: hidden;
+        position: relative;
+        background:
+          linear-gradient(120deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.28)),
+          url("../img/slider-banner2.png") center/cover no-repeat;
+        box-shadow: 0 24px 44px rgba(17, 17, 17, 0.18);
+        display: flex;
+        align-items: end;
+        padding: clamp(22px, 4vw, 42px);
+      }
+
+      .brand-hero-content {
+        max-width: 720px;
+        color: #fff;
+      }
+
+      .brand-hero-content .eyebrow {
+        display: inline-block;
+        padding: 7px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(8px);
+        font-size: 13px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .brand-hero-content h1 {
+        font-size: clamp(34px, 5vw, 62px);
+        line-height: 1.05;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .brand-hero-content p {
+        font-size: clamp(15px, 1.6vw, 19px);
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.92);
+        margin-bottom: 22px;
+      }
+
+      .brand-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .brand-outline-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 999px;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.25s ease;
+      }
+
+      .brand-outline-btn:hover {
+        background: #fff;
+        color: #111;
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .brand-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        border-radius: 24px;
+        padding: 26px;
+        box-shadow: 0 14px 28px rgba(17, 17, 17, 0.07);
+      }
+
+      .brand-card h2,
+      .brand-card h3 {
+        margin-bottom: 14px;
+        font-weight: 800;
+      }
+
+      .brand-card p {
+        color: #626262;
+        line-height: 1.75;
+        margin-bottom: 0;
+      }
+
+      .shop-image {
+        min-height: 100%;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 14px 28px rgba(17, 17, 17, 0.07);
+        border: 1px solid rgba(17, 17, 17, 0.08);
+      }
+
+      .shop-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 330px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .section-title {
+        text-align: center;
+        margin: 44px 0 18px;
+      }
+
+      .section-title span {
+        display: inline-block;
+        padding: 6px 13px;
+        border-radius: 999px;
+        background: #111;
+        color: #fff;
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .section-title h2 {
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .section-title p {
+        color: #666;
+        max-width: 650px;
+        margin: auto;
+        line-height: 1.7;
+      }
+
+      .mission-grid,
+      .strength-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .mission-item,
+      .strength-item {
+        background: #fff;
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: 0 12px 24px rgba(17, 17, 17, 0.06);
+        transition: 0.25s ease;
+      }
+
+      .mission-item:hover,
+      .strength-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .mission-icon,
+      .strength-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #111, #333);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        margin-bottom: 14px;
+      }
+
+      .mission-item h3,
+      .strength-item h3 {
+        font-size: 19px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .mission-item p,
+      .strength-item p {
+        color: #666;
+        line-height: 1.65;
+        margin-bottom: 0;
+      }
+
+      .banner-showcase {
+        margin-top: 44px;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .banner-note {
+        background: linear-gradient(135deg, #111, #2c2c2c);
+        color: #fff;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 16px 34px rgba(17, 17, 17, 0.16);
+      }
+
+      .banner-note h2 {
+        font-weight: 800;
+        margin-bottom: 14px;
+      }
+
+      .banner-note p {
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
+
+      .banner-note ul {
+        padding-left: 18px;
+        margin-bottom: 0;
+      }
+
+      .banner-note li {
+        margin-bottom: 9px;
+      }
+
+      .banner-img {
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 16px 34px rgba(17, 17, 17, 0.1);
+      }
+
+      .banner-img img {
+        width: 100%;
+        height: 100%;
+        min-height: 330px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .contact-section {
+        margin-top: 44px;
+        background: #fff;
+        border-radius: 26px;
+        padding: 28px;
+        border: 1px solid rgba(17, 17, 17, 0.08);
+        box-shadow: 0 16px 34px rgba(17, 17, 17, 0.07);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .contact-info h2 {
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      .contact-info p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        background: #f8f4ef;
+      }
+
+      .contact-item strong {
+        display: block;
+      }
+
+      .contact-item span {
+        color: #666;
+      }
+
+      .contact-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: #111;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        font-size: 20px;
+      }
+
+      .contact-map {
+        min-height: 270px;
+        border-radius: 20px;
+        background:
+          linear-gradient(rgba(17, 17, 17, 0.24), rgba(17, 17, 17, 0.24)),
+          url("../img/sneaker_trends.jpg") center/cover no-repeat;
+        display: flex;
+        align-items: end;
+        padding: 20px;
+        color: #fff;
+      }
+
+      .contact-map div {
+        background: rgba(0, 0, 0, 0.55);
+        padding: 14px 16px;
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+      }
+
+      .contact-map h4 {
+        margin-bottom: 5px;
+        font-weight: 800;
+      }
+
+      .contact-map p {
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      @media (max-width: 992px) {
+        .intro-grid,
+        .banner-showcase,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mission-grid,
+        .strength-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .brand-hero {
+          min-height: 430px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .brand-shell {
+          width: min(100% - 18px, 1220px);
+        }
+
+        .brand-hero,
+        .brand-card,
+        .contact-section {
+          border-radius: 20px;
+        }
+
+        .brand-actions {
+          flex-direction: column;
+        }
+
+        .brand-actions a {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="shared-header"></div>
+    <script>
+      fetch("../compones/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-header");
+          host.innerHTML = html;
+
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+
+          const links = host.querySelectorAll("nav a");
+          links.forEach((link) => {
+            if (link.getAttribute("href") && link.getAttribute("href").includes("about.html")) {
+              link.classList.add("active");
+            }
+          });
+        });
+    </script>
+
+    <main class="brand-shell">
+      <section class="brand-hero">
+        <div class="brand-hero-content">
+          <span class="eyebrow">HAO SHOES / Since 2026</span>
+          <h1>Thương hiệu giày thời trang dành cho nhịp sống hiện đại.</h1>
+          <p>
+            HAO SHOES là cửa hàng giày thời trang thành lập năm 2026, chuyên
+            cung cấp các mẫu giày nam nữ chất lượng cao, kiểu dáng hiện đại,
+            dễ phối đồ và phù hợp với nhiều nhu cầu sử dụng hằng ngày.
+          </p>
+
+          <div class="brand-actions">
+            <a href="men.html" class="my-btn">Xem giày nam</a>
+            <a href="women.html" class="brand-outline-btn">Xem giày nữ</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-grid">
+        <article class="brand-card">
+          <h2>Giới thiệu shop</h2>
+          <p>
+            HAO SHOES được xây dựng với mong muốn mang đến cho khách hàng những
+            đôi giày đẹp, bền, dễ mang và có mức giá hợp lý. Shop tập trung vào
+            các dòng giày thời trang nam nữ, sneaker, giày lifestyle và những
+            mẫu giày theo xu hướng mới. Mỗi sản phẩm đều được lựa chọn nhằm đảm
+            bảo sự thoải mái, tính thẩm mỹ và khả năng ứng dụng trong đời sống
+            hằng ngày.
+          </p>
+        </article>
+
+        <div class="shop-image">
+          <img src="../img/banner-women.png" alt="Hình ảnh shop HAO SHOES" />
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span>Sứ mệnh</span>
+          <h2>HAO SHOES mang đến trải nghiệm mua giày tốt hơn</h2>
+          <p>
+            Chúng tôi không chỉ bán giày, mà còn mong muốn giúp khách hàng tự tin
+            hơn trong từng bước đi.
+          </p>
+        </div>
+
+        <div class="mission-grid">
+          <article class="mission-item">
+            <div class="mission-icon">👟</div>
+            <h3>Mang giày đẹp giá tốt</h3>
+            <p>
+              Cung cấp các mẫu giày thời trang có thiết kế đẹp, chất lượng ổn
+              định và mức giá phù hợp với nhiều khách hàng.
+            </p>
+          </article>
+
+          <article class="mission-item">
+            <div class="mission-icon">🤝</div>
+            <h3>Phục vụ tận tâm</h3>
+            <p>
+              Luôn hỗ trợ khách hàng trong quá trình chọn size, tư vấn mẫu giày,
+              đặt hàng, đổi hàng và bảo hành sản phẩm.
+            </p>
+          </article>
+
+          <article class="mission-item">
+            <div class="mission-icon">✨</div>
+            <h3>Theo xu hướng mới</h3>
+            <p>
+              Cập nhật thường xuyên các mẫu giày hiện đại, dễ phối đồ, phù hợp
+              phong cách trẻ trung và năng động.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span>Điểm mạnh</span>
+          <h2>Lý do khách hàng chọn HAO SHOES</h2>
+          <p>
+            HAO SHOES chú trọng vào sự đa dạng sản phẩm, chính sách mua hàng rõ
+            ràng và dịch vụ giao hàng tiện lợi.
+          </p>
+        </div>
+
+        <div class="strength-grid">
+          <article class="strength-item">
+            <div class="strength-icon">🛍️</div>
+            <h3>Nhiều mẫu mã</h3>
+            <p>
+              Sản phẩm đa dạng cho cả nam và nữ, phù hợp với nhiều phong cách
+              như đi học, đi làm, đi chơi và luyện tập nhẹ.
+            </p>
+          </article>
+
+          <article class="strength-item">
+            <div class="strength-icon">✅</div>
+            <h3>Bảo hành uy tín</h3>
+            <p>
+              Shop hỗ trợ khách hàng trong quá trình sử dụng, đảm bảo quyền lợi
+              và tạo sự yên tâm khi mua sắm tại HAO SHOES.
+            </p>
+          </article>
+
+          <article class="strength-item">
+            <div class="strength-icon">🚚</div>
+            <h3>Giao hàng toàn quốc</h3>
+            <p>
+              Hỗ trợ giao hàng trên toàn quốc, giúp khách hàng dễ dàng mua sắm
+              dù ở bất kỳ đâu.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="banner-showcase">
+        <article class="banner-note">
+          <h2>Hình ảnh shop / banner</h2>
+          <p>
+            HAO SHOES hướng đến phong cách trẻ trung, hiện đại và dễ tiếp cận.
+            Các banner của shop tập trung thể hiện tinh thần năng động, thoải mái
+            và tự tin trong từng bước đi.
+          </p>
+
+          <ul>
+            <li>Không gian thương hiệu hiện đại, gần gũi.</li>
+            <li>Sản phẩm phù hợp nhiều phong cách thời trang.</li>
+            <li>Hình ảnh nổi bật, dễ nhận diện với khách hàng trẻ.</li>
+          </ul>
+        </article>
+
+        <div class="banner-img">
+          <img src="../img/slider-banner1.png" alt="Banner thương hiệu HAO SHOES" />
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2>Thông tin liên hệ</h2>
+            <p>
+              Khách hàng có thể liên hệ HAO SHOES để được tư vấn mẫu giày, size
+              giày, chính sách bảo hành và hỗ trợ đặt hàng nhanh chóng.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <strong>Địa chỉ</strong>
+                  <span>TP.HCM</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                  <strong>Số điện thoại</strong>
+                  <span>0909999999</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                  <strong>Email</strong>
+                  <span>haoshoes@gmail.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-map">
+            <div>
+              <h4>HAO SHOES STORE</h4>
+              <p>Giày thời trang nam nữ chất lượng cao, giá tốt, giao hàng toàn quốc.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="shared-footer"></div>
+    <script>
+      fetch("../compones/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-footer");
+          host.innerHTML = html;
+
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) newScript.src = oldScript.src;
+            else newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
+
+    <script type="module" src="../js/mascot.js"></script>
+  </body>
+</html>
