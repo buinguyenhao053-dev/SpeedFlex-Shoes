@@ -1,175 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HAO SHOES - Đăng Nhập</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/jquery-4.0.0.min.js"></script>
     <style>
-        .section-login {
-            height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      .section-login {
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        .dangnhap {
-            margin: auto;
-            width: 420px;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-        }
+      .dangnhap {
+        margin: auto;
+        width: 420px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div class="topbar">
-        <div>Miễn phí vận chuyển toàn quốc</div>
-        <div>
-            <a href="login.html">Đăng nhập</a>
-            <a href="register.html">Đăng ký</a>
-        </div>
-    </div>
+  <body>
+    <div id="shared-header"></div>
+    <script>
+      fetch("../compones/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-header");
+          host.innerHTML = html;
 
-    <header>
-        <a href="../index.html" class="logo">HAO SHOES</a>
-    </header>
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
 
     <section class="section-login">
-        <form class="dangnhap">
-            <h2 class="text-center fw-bold">Login / Đăng nhập</h2>
-            <div class="mb-3">
-                <input type="text" class="form-control " name="" id="mailsdt" placeholder="Email / Số điện thoại" />
-                <small id="errmailsdt" class="form-text text-danger"></small>
-            </div>
-            <div class="mb-3">
-                <input type="password" class="form-control " name="" id="password" placeholder="Mật khẩu" />
-                <small id="errpassword" class="form-text text-danger"></small>
-            </div>
+      <form class="dangnhap">
+        <h2 class="text-center fw-bold">Login / Đăng nhập</h2>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="mailsdt"
+            placeholder="Email / Số điện thoại"
+          />
+          <small id="errmailsdt" class="form-text text-danger"></small>
+        </div>
+        <div class="mb-3">
+          <input
+            type="password"
+            class="form-control"
+            name=""
+            id="password"
+            placeholder="Mật khẩu"
+          />
+          <small id="errpassword" class="form-text text-danger"></small>
+        </div>
 
-            <div class="d-grid mb-3">
-                <input name="" id="btnLogin" class="btn btn-dark btnlog" type="button" value="Đăng nhập" disabled />
-            </div>
+        <div class="d-grid mb-3">
+          <input
+            name=""
+            id="btnLogin"
+            class="btn btn-dark btnlog"
+            type="button"
+            value="Đăng nhập"
+            disabled
+          />
+        </div>
 
-            <div class="mb-3">
-                <a href="../html/forgot-password.html" class="forgot" style="text-decoration: none;">Quên mật khẩu?</a>
-            </div>
+        <div class="mb-3">
+          <a
+            href="../html/forgot-password.html"
+            class="forgot"
+            style="text-decoration: none"
+            >Quên mật khẩu?</a
+          >
+        </div>
 
-            <div class="text-center text-muted mb-3">Hoặc đăng nhập với</div>
+        <div class="text-center text-muted mb-3">Hoặc đăng nhập với</div>
 
-            <div class="d-flex justify-content-center gap-3 mb-3">
-                <button class="btn btn-outline-secondary btn-xahoi" type="button">
-                    <img src="../img/logo-google.png" alt=""> Google
-                </button>
-                <button class="btn btn-outline-secondary btn-xahoi" type="button">
-                    <img src="../img/logo-facebook.png" alt=""> Facebook
-                </button>
-            </div>
+        <div class="d-flex justify-content-center gap-3 mb-3">
+          <button class="btn btn-outline-secondary btn-xahoi" type="button">
+            <img src="../img/logo-google.png" alt="" /> Google
+          </button>
+          <button class="btn btn-outline-secondary btn-xahoi" type="button">
+            <img src="../img/logo-facebook.png" alt="" /> Facebook
+          </button>
+        </div>
 
-            <div class="text-center text-muted">Tạo tài khoản mới. <a href="../html/register.html"
-                    style="text-decoration: none;">Đăng ký.</a></div>
-        </form>
+        <div class="text-center text-muted">
+          Tạo tài khoản mới.
+          <a href="../html/register.html" style="text-decoration: none"
+            >Đăng ký.</a
+          >
+        </div>
+      </form>
     </section>
 
-<script>
-$(document).ready(function () {
+    <script>
+      $(document).ready(function () {
+        let isValidPass = false;
+        let isValidMail = false;
 
-    let isValidPass = false;
-    let isValidMail = false;
+        function checkLogin() {
+          $("#btnLogin").prop("disabled", !(isValidPass && isValidMail));
+        }
 
-    function checkLogin() {
-        $("#btnLogin").prop("disabled", !(isValidPass && isValidMail));
-    }
+        $("#mailsdt").on("input", function () {
+          let value = $(this).val().trim();
+          let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          let phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
 
-    $("#mailsdt").on("input", function () {
-        let value = $(this).val().trim();
-        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        let phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
-
-        if (value === "") {
+          if (value === "") {
             $("#errmailsdt").text("Không được để trống");
             isValidMail = false;
-        } else if (!emailRegex.test(value) && !phoneRegex.test(value)) {
+          } else if (!emailRegex.test(value) && !phoneRegex.test(value)) {
             $("#errmailsdt").text("Email/SĐT không hợp lệ");
             isValidMail = false;
-        } else {
+          } else {
             $("#errmailsdt").text("");
             isValidMail = true;
-        }
-        checkLogin();
-    });
+          }
+          checkLogin();
+        });
 
-    $("#password").on("input", function () {
-        let password = $(this).val().trim();
+        $("#password").on("input", function () {
+          let password = $(this).val().trim();
 
-        if (password === "") {
+          if (password === "") {
             $("#errpassword").text("Không được để trống");
             isValidPass = false;
-        } else if (password.length < 6) {
+          } else if (password.length < 6) {
             $("#errpassword").text(">= 6 ký tự");
             isValidPass = false;
-        } else {
+          } else {
             $("#errpassword").text("");
             isValidPass = true;
-        }
-        checkLogin();
-    });
+          }
+          checkLogin();
+        });
 
-    $("#btnLogin").click(function () {
+        $("#btnLogin").click(function () {
+          let email = $("#mailsdt").val().trim();
+          let password = $("#password").val().trim();
 
-        let email = $("#mailsdt").val().trim();
-        let password = $("#password").val().trim();
+          let users = JSON.parse(localStorage.getItem("users")) || [];
 
-        let users = JSON.parse(localStorage.getItem("users")) || [];
+          // tìm user
+          let user = users.find(
+            (u) => u.email === email && u.password === password,
+          );
 
-        // tìm user
-        let user = users.find(u => u.email === email && u.password === password);
-
-        if (user) {
+          if (user) {
             localStorage.setItem("isLogin", "true");
             localStorage.setItem("currentUser", JSON.stringify(user)); // lưu user đang login
 
             alert("Đăng nhập thành công!");
             window.location.href = "../index.html";
-        } else {
+          } else {
             alert("Sai tài khoản hoặc mật khẩu!");
-        }
-    });
+          }
+        });
+      });
+    </script>
 
-});
-</script>
+    <div id="shared-footer"></div>
+    <script>
+      fetch("../compones/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-footer");
+          host.innerHTML = html;
 
-    <footer>
-
-        <div class="footer-grid">
-            <div>
-                <h4>Thông tin shop</h4>
-                <p>Địa chỉ: TP.HCM</p>
-                <p>SĐT: 0909999999</p>
-                <p>Email: haoshoes@gmail.com</p>
-            </div>
-
-            <div>
-                <h4>Chính sách khách hàng</h4>
-                <p>Hướng dẫn đặt hàng</p>
-                <p>Bảo hành</p>
-                <p>Đổi hàng</p>
-                <p>Thanh toán</p>
-            </div>
-
-            <div>
-                <h4>Giới thiệu</h4>
-                <p>Thành lập 2026</p>
-                <p>Shop giày thời trang</p>
-            </div>
-        </div>
-        <p class="copy">© 2026 HAO SHOES STORE</p>
-    </footer>
-</body>
-
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) newScript.src = oldScript.src;
+            else newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
+  </body>
 </html>

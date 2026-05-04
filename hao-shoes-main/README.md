@@ -1,1 +1,0 @@
-# hao-shoes-log

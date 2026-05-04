@@ -1,136 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lịch sử đơn hàng - HAO SHOES</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lịch sử đơn hàng - HAO SHOES</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/style.css">
-<script src="../js/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/jquery-4.0.0.min.js"></script>
 
-<style>
-.order-card {
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 20px;
-  background: #fff;
-}
+    <style>
+      .order-card {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        background: #fff;
+      }
 
-.order-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
 
-.order-item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-}
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
 
-.order-total {
-  font-weight: bold;
-  color: red;
-}
-</style>
-</head>
+      .order-total {
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <div id="shared-header"></div>
+    <script>
+      fetch("../compones/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-header");
+          host.innerHTML = html;
 
-<div class="topbar">
-  <div>Miễn phí vận chuyển toàn quốc</div>
-    <div id="auth-links">
-      <a href="login.html">Đăng nhập</a>
-      <a href="register.html">Đăng ký</a>
-    </div>
-</div>
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
 
-<header>
-  <a href="index.html" class="logo">HAO SHOES</a>
+    <div class="container py-5" style="max-width: 900px">
+      <h2 class="text-center mb-4">Lịch sử đơn hàng</h2>
 
-  <nav>
-    <a href="index.html">Trang chủ</a>
-    <a href="sale.html">Sale</a>
-    <a href="history.html" class="active">Đơn hàng</a>
-  </nav>
+      <div id="order-list"></div>
 
-  <div class="icons">
-    <a href="cart.html">🛒</a>
-  </div>
-</header>
-
-<div class="container py-5" style="max-width:900px;">
-  <h2 class="text-center mb-4">Lịch sử đơn hàng</h2>
-
-  <div id="order-list"></div>
-
-  <div id="empty" class="text-center d-none">
-    <p>Bạn chưa có đơn hàng nào</p>
-    <a href="index.html" class="btn btn-dark">Mua ngay</a>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-grid">
-    <div>
-      <h4>Thông tin shop</h4>
-      <p>Địa chỉ: TP.HCM</p>
-      <p>SĐT: 0909999999</p>
-      <p>Email: haoshoes@gmail.com</p>
+      <div id="empty" class="text-center d-none">
+        <p>Bạn chưa có đơn hàng nào</p>
+        <a href="index.html" class="btn btn-dark">Mua ngay</a>
+      </div>
     </div>
 
-    <div>
-      <h4>Chính sách khách hàng</h4>
-      <p>Hướng dẫn đặt hàng</p>
-      <p>Bảo hành</p>
-      <p>Đổi hàng</p>
-      <p>Thanh toán</p>
-    </div>
+    <div id="shared-footer"></div>
+    <script>
+      fetch("../compones/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-footer");
+          host.innerHTML = html;
 
-    <div>
-      <h4>Giới thiệu</h4>
-      <p>Thành lập 2026</p>
-      <p>Shop giày thời trang</p>
-    </div>
-  </div>
-  <p class="copy">© 2026 HAO SHOES STORE</p>
-</footer>
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) newScript.src = oldScript.src;
+            else newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
 
-<script>
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    <script>
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-function renderOrders(){
-  const list = document.getElementById("order-list");
-  const empty = document.getElementById("empty");
+      function renderOrders() {
+        const list = document.getElementById("order-list");
+        const empty = document.getElementById("empty");
 
-  if(!orders || orders.length === 0){
-    empty.classList.remove("d-none");
-    list.innerHTML = "";
-    return;
-  }
+        if (!orders || orders.length === 0) {
+          empty.classList.remove("d-none");
+          list.innerHTML = "";
+          return;
+        }
 
-  empty.classList.add("d-none");
+        empty.classList.add("d-none");
 
-  let html = "";
+        let html = "";
 
-  orders.slice().reverse().forEach(order => {
+        orders
+          .slice()
+          .reverse()
+          .forEach((order) => {
+            let itemsHTML = "";
 
-    let itemsHTML = "";
+            (order.items || []).forEach((item) => {
+              const price = item.price || 0;
 
-    (order.items || []).forEach(item => {
-      const price = item.price || 0;
-
-      itemsHTML += `
+              itemsHTML += `
         <div class="order-item">
           <span>${item.name} (Size ${item.size || "-"}) x${item.qty}</span>
           <span>${(price * item.qty).toLocaleString()}₫</span>
         </div>
       `;
-    });
+            });
 
-    html += `
+            html += `
       <div class="order-card shadow-sm">
         <div class="order-header">
           <div>
@@ -154,34 +146,33 @@ function renderOrders(){
         </div>
       </div>
     `;
-  });
+          });
 
-  list.innerHTML = html;
-}
+        list.innerHTML = html;
+      }
 
-document.addEventListener("DOMContentLoaded", renderOrders);
-$(document).ready(function() {
-            // Kiểm tra trạng thái đăng nhập
-            let isLogin = localStorage.getItem("isLogin");
-            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      document.addEventListener("DOMContentLoaded", renderOrders);
+      $(document).ready(function () {
+        // Kiểm tra trạng thái đăng nhập
+        let isLogin = localStorage.getItem("isLogin");
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-            if (isLogin === "true" && currentUser) {
-                $("#auth-links").html(`
+        if (isLogin === "true" && currentUser) {
+          $("#auth-links").html(`
                     <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
                     <a href="#" id="btnLogout">Đăng xuất</a>
                 `);
-            }
+        }
 
-            // Xử lý đăng xuất
-            $(document).on("click", "#btnLogout", function(e) {
-                e.preventDefault();
-                localStorage.removeItem("isLogin");
-                localStorage.removeItem("currentUser");
-                alert("Đã đăng xuất!");
-                location.reload();
-            });
+        // Xử lý đăng xuất
+        $(document).on("click", "#btnLogout", function (e) {
+          e.preventDefault();
+          localStorage.removeItem("isLogin");
+          localStorage.removeItem("currentUser");
+          alert("Đã đăng xuất!");
+          location.reload();
         });
-</script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>

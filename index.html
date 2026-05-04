@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HAO SHOES - Trang Chủ</title>
 
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     /> -->
-    <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/jquery-4.0.0.min.js"></script>
-    <link rel="stylesheet" href="../css/spline.css">
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="./css/spline.css" />
     <style>
-      
       .hero-slider {
         position: relative;
         margin: 18px auto 28px;
@@ -189,26 +188,28 @@
   </head>
 
   <body>
-    <div id="shared-header"></div>
-    <script>
-      fetch("../compones/header.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const host = document.getElementById("shared-header");
-          host.innerHTML = html;
+    
+      <div id="shared-header"></div>
+      <script>
+        fetch("./compones/header.html")
+          .then((res) => res.text())
+          .then((html) => {
+            const host = document.getElementById("shared-header");
+            host.innerHTML = html;
 
-          host.querySelectorAll("script").forEach((oldScript) => {
-            const newScript = document.createElement("script");
-            if (oldScript.src) {
-              newScript.src = oldScript.src;
-            } else {
-              newScript.textContent = oldScript.textContent;
-            }
-            document.body.appendChild(newScript);
-            oldScript.remove();
+            host.querySelectorAll("script").forEach((oldScript) => {
+              const newScript = document.createElement("script");
+              if (oldScript.src) {
+                newScript.src = oldScript.src;
+              } else {
+                newScript.textContent = oldScript.textContent;
+              }
+              document.body.appendChild(newScript);
+              oldScript.remove();
+            });
           });
-        });
-    </script>
+      </script>
+    
 
     <section class="hero-slider" id="heroSlider">
       <article class="hero-slide active">
@@ -334,23 +335,25 @@
       </div>
     </section>
 
-    <div id="shared-footer"></div>
-    <script>
-      fetch("../compones/footer.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const host = document.getElementById("shared-footer");
-          host.innerHTML = html;
+    
+      <div id="shared-footer"></div>
+      <script>
+        fetch("./compones/footer.html")
+          .then((res) => res.text())
+          .then((html) => {
+            const host = document.getElementById("shared-footer");
+            host.innerHTML = html;
 
-          host.querySelectorAll("script").forEach((oldScript) => {
-            const newScript = document.createElement("script");
-            if (oldScript.src) newScript.src = oldScript.src;
-            else newScript.textContent = oldScript.textContent;
-            document.body.appendChild(newScript);
-            oldScript.remove();
+            host.querySelectorAll("script").forEach((oldScript) => {
+              const newScript = document.createElement("script");
+              if (oldScript.src) newScript.src = oldScript.src;
+              else newScript.textContent = oldScript.textContent;
+              document.body.appendChild(newScript);
+              oldScript.remove();
+            });
           });
-        });
-    </script>
+      </script>
+    
     <script>
       $(document).ready(function () {
         // Kiểm tra trạng thái đăng nhập
@@ -428,6 +431,6 @@
     </script>
     <!-- <canvas id="canvas3d"></canvas> -->
 
-    <script type="module" src="../js/spline.js"></script>
+    <script type="module" src="./js/spline.js"></script>
   </body>
 </html>

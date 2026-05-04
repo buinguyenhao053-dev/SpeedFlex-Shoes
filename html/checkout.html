@@ -1,208 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thanh toán - HAO SHOES</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh toán - HAO SHOES</title>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<script src="../js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="../css/style.css">
-<script src="../js/jquery-4.0.0.min.js"></script>
-</head>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/jquery-4.0.0.min.js"></script>
+  </head>
 
-<body>
+  <body>
+    <div id="shared-header"></div>
+    <script>
+      fetch("../compones/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-header");
+          host.innerHTML = html;
 
-<div class="topbar">
-    <div>Miễn phí vận chuyển toàn quốc</div>
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
 
-        <div id="auth-links">
-            <a href="login.html">Đăng nhập</a>
-            <a href="register.html">Đăng ký</a>
-        </div>
-</div>
+    <div class="container py-5" style="max-width: 1000px">
+      <h2 class="text-center mb-4">Thanh toán</h2>
 
-<header>
-    <a href="../index.html" class="logo">HAO SHOES</a>
-
-    <nav>
-        <a href="../index.html">Trang chủ</a>
-        <a href="men.html">Nam</a>
-        <a href="women.html">Nữ</a>
-        <a href="sale.html">Sale</a>
-    </nav>
-
-     <div class="icons">
-        <a href="cart.html" class="icon icon-cart"></a>
-      </div>
-</header>
-
-<div class="container py-5" style="max-width:1000px;">
-    <h2 class="text-center mb-4">Thanh toán</h2>
-
-    <div class="row g-4">
-
+      <div class="row g-4">
         <!-- FORM -->
         <div class="col-md-7">
-            <div class="card p-4 shadow-sm">
-                <h5>Thông tin khách hàng</h5>
+          <div class="card p-4 shadow-sm">
+            <h5>Thông tin khách hàng</h5>
 
-                <input id="name" class="form-control mb-3" placeholder="Họ tên">
-                <input id="phone" class="form-control mb-3" placeholder="SĐT">
-                <input id="address" class="form-control mb-3" placeholder="Địa chỉ">
-                <textarea id="note" class="form-control" placeholder="Ghi chú"></textarea>
-            </div>
+            <input id="name" class="form-control mb-3" placeholder="Họ tên" />
+            <input id="phone" class="form-control mb-3" placeholder="SĐT" />
+            <input
+              id="address"
+              class="form-control mb-3"
+              placeholder="Địa chỉ"
+            />
+            <textarea
+              id="note"
+              class="form-control"
+              placeholder="Ghi chú"
+            ></textarea>
+          </div>
         </div>
 
         <!-- ORDER -->
         <div class="col-md-5">
-            <div class="card p-4 shadow-sm">
-                <h5>Đơn hàng</h5>
+          <div class="card p-4 shadow-sm">
+            <h5>Đơn hàng</h5>
 
-                <div id="order-list"></div>
+            <div id="order-list"></div>
 
-                <hr>
+            <hr />
 
-                <h5 class="d-flex justify-content-between">
-                    <span>Tổng</span>
-                    <span id="total">0₫</span>
-                </h5>
+            <h5 class="d-flex justify-content-between">
+              <span>Tổng</span>
+              <span id="total">0₫</span>
+            </h5>
 
-                <button id="btnCheckout"
-                class="btn btn-dark w-100 mt-3"
-                onclick="checkout()">
-                Xác nhận đặt hàng
-                </button>
-            </div>
+            <button
+              id="btnCheckout"
+              class="btn btn-dark w-100 mt-3"
+              onclick="checkout()"
+            >
+              Xác nhận đặt hàng
+            </button>
+          </div>
         </div>
-
+      </div>
     </div>
-</div>
 
-<footer>
-    <div class="footer-grid">
-        <div>
-            <h4>Thông tin shop</h4>
-            <p>Địa chỉ: TP.HCM</p>
-            <p>SĐT: 0909999999</p>
-            <p>Email: haoshoes@gmail.com</p>
-        </div>
+    <div id="shared-footer"></div>
+    <script>
+      fetch("../compones/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-footer");
+          host.innerHTML = html;
 
-        <div>
-            <h4>Chính sách khách hàng</h4>
-            <p>Hướng dẫn đặt hàng</p>
-            <p>Bảo hành</p>
-            <p>Đổi hàng</p>
-            <p>Thanh toán</p>
-        </div>
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) newScript.src = oldScript.src;
+            else newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+        });
+    </script>
 
-        <div>
-            <h4>Giới thiệu</h4>
-            <p>Thành lập 2026</p>
-            <p>Shop giày thời trang</p>
-        </div>
-    </div>
-    <p class="copy">© 2026 HAO SHOES STORE</p>
-</footer>
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      function renderOrder() {
+        let html = "";
+        let total = 0;
 
-function renderOrder(){
-    let html = "";
-    let total = 0;
+        const list = document.getElementById("order-list");
+        const totalEl = document.getElementById("total");
+        const btn = document.getElementById("btnCheckout");
 
-    const list = document.getElementById("order-list");
-    const totalEl = document.getElementById("total");
-    const btn = document.getElementById("btnCheckout");
+        if (cart.length === 0) {
+          list.innerHTML = "Không có sản phẩm";
+          totalEl.innerText = "0₫";
+          btn.disabled = true;
+          return;
+        }
 
-    if(cart.length === 0){
-        list.innerHTML = "Không có sản phẩm";
-        totalEl.innerText = "0₫";
-        btn.disabled = true;
-        return;
-    }
+        btn.disabled = false;
 
-    btn.disabled = false;
+        cart.forEach((item) => {
+          total += item.price * item.qty;
 
-    cart.forEach(item=>{
-        total += item.price * item.qty;
-
-        html += `
+          html += `
         <div class="d-flex justify-content-between mb-2">
             <span>${item.name} x${item.qty}</span>
-            <span>${(item.price*item.qty).toLocaleString()}₫</span>
+            <span>${(item.price * item.qty).toLocaleString()}₫</span>
         </div>
         `;
-    });
+        });
 
-    list.innerHTML = html;
-    totalEl.innerText = total.toLocaleString() + "₫";
-}
+        list.innerHTML = html;
+        totalEl.innerText = total.toLocaleString() + "₫";
+      }
 
-function checkout(){
-    let name = document.getElementById("name").value.trim();
-    let phone = document.getElementById("phone").value.trim();
-    let address = document.getElementById("address").value.trim();
+      function checkout() {
+        let name = document.getElementById("name").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let address = document.getElementById("address").value.trim();
 
-    if(!name || !phone || !address){
-        alert("Nhập đầy đủ thông tin");
-        return;
-    }
+        if (!name || !phone || !address) {
+          alert("Nhập đầy đủ thông tin");
+          return;
+        }
 
-    if(!/^[0-9]{9,11}$/.test(phone)){
-        alert("SĐT không hợp lệ");
-        return;
-    }
+        if (!/^[0-9]{9,11}$/.test(phone)) {
+          alert("SĐT không hợp lệ");
+          return;
+        }
 
-    if(cart.length === 0){
-        alert("Giỏ hàng trống");
-        return;
-    }
+        if (cart.length === 0) {
+          alert("Giỏ hàng trống");
+          return;
+        }
 
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+        let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-    orders.push({
-        name,
-        phone,
-        address,
-        note: document.getElementById("note").value,
-        items: cart,
-        total: cart.reduce((s,i)=>s+i.price*i.qty,0),
-        date: new Date().toLocaleString()
-    });
+        orders.push({
+          name,
+          phone,
+          address,
+          note: document.getElementById("note").value,
+          items: cart,
+          total: cart.reduce((s, i) => s + i.price * i.qty, 0),
+          date: new Date().toLocaleString(),
+        });
 
-    localStorage.setItem("orders", JSON.stringify(orders));
+        localStorage.setItem("orders", JSON.stringify(orders));
 
-    alert("Đặt hàng thành công!");
+        alert("Đặt hàng thành công!");
 
-    localStorage.removeItem("cart");
-    location.href = "index.html";
-}
+        localStorage.removeItem("cart");
+        location.href = "index.html";
+      }
 
-document.addEventListener("DOMContentLoaded", renderOrder);
-            $(document).ready(function() {
-            // Kiểm tra trạng thái đăng nhập
-            let isLogin = localStorage.getItem("isLogin");
-            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      document.addEventListener("DOMContentLoaded", renderOrder);
+      $(document).ready(function () {
+        // Kiểm tra trạng thái đăng nhập
+        let isLogin = localStorage.getItem("isLogin");
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-            if (isLogin === "true" && currentUser) {
-                $("#auth-links").html(`
+        if (isLogin === "true" && currentUser) {
+          $("#auth-links").html(`
                     <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
                     <a href="#" id="btnLogout">Đăng xuất</a>
                 `);
-            }
+        }
 
-            // Xử lý đăng xuất
-            $(document).on("click", "#btnLogout", function(e) {
-                e.preventDefault();
-                localStorage.removeItem("isLogin");
-                localStorage.removeItem("currentUser");
-                alert("Đã đăng xuất!");
-                location.reload();
-            });
+        // Xử lý đăng xuất
+        $(document).on("click", "#btnLogout", function (e) {
+          e.preventDefault();
+          localStorage.removeItem("isLogin");
+          localStorage.removeItem("currentUser");
+          alert("Đã đăng xuất!");
+          location.reload();
         });
-</script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>
