@@ -260,6 +260,7 @@
     <a id="hs-nav-men" class="hs-link" href="#">Nam</a>
     <a id="hs-nav-women" class="hs-link" href="#">Nữ</a>
     <a id="hs-nav-sale" class="hs-link" href="#">Đang Sale</a>
+    <a id="hs-nav-history" class="hs-link" href="#">Đơn hàng</a>
     <label class="hs-search">
       <span>🔎</span>
       <input type="text" placeholder="Tìm kiếm nhanh..." />
@@ -291,6 +292,7 @@
           sale: "sale.html",
           cart: "cart.html",
           login: "login.html",
+          history: "history.html",
           register: "register.html",
         }
       : {
@@ -301,6 +303,7 @@
           sale: "html/sale.html",
           cart: "html/cart.html",
           login: "html/login.html",
+          history: "html/history.html",
           register: "html/register.html",
         };
 
@@ -311,7 +314,9 @@
     document.getElementById("hs-nav-men").href = links.men;
     document.getElementById("hs-nav-women").href = links.women;
     document.getElementById("hs-nav-sale").href = links.sale;
+    document.getElementById("hs-nav-history").href = links.history;
     document.getElementById("hs-cart-link").href = links.cart;
+
 
     // ===== ACTIVE =====
     const path = window.location.pathname.toLowerCase();
@@ -321,6 +326,7 @@
       { key: "hs-nav-men", match: "/men.html" },
       { key: "hs-nav-women", match: "/women.html" },
       { key: "hs-nav-sale", match: "/sale.html" },
+      { key: "hs-nav-history", match: "/history.html" },
     ];
 
     activeMap.forEach((item) => {
