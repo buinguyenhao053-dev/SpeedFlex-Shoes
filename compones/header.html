@@ -132,7 +132,9 @@
     border-radius: 999px;
     border: 1px solid #e7decf;
     padding: 8px 14px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .hs-search input {
@@ -166,7 +168,9 @@
     color: #111;
     font-size: 18px;
     box-shadow: 0 6px 14px rgba(17, 17, 17, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .hs-icon-btn:hover {
@@ -270,10 +274,7 @@
       <button class="hs-icon-btn" type="button" aria-label="Tài khoản">
         <span class="material-symbols-outlined">person</span>
       </button>
-      <div class="hs-user-dropdown">
-        <a id="hs-login-link" href="#">Đăng nhập</a>
-        <a id="hs-register-link" href="#">Đăng ký</a>
-      </div>
+      <div class="hs-user-dropdown" id="user-dropdown"></div>
     </div>
   </div>
 </header>
@@ -303,6 +304,7 @@
           register: "html/register.html",
         };
 
+    // ===== LINK =====
     document.getElementById("hs-home-link").href = links.home;
     document.getElementById("hs-nav-home").href = links.home;
     document.getElementById("hs-nav-about").href = links.about;
@@ -311,6 +313,7 @@
     document.getElementById("hs-nav-sale").href = links.sale;
     document.getElementById("hs-cart-link").href = links.cart;
 
+    // ===== ACTIVE =====
     const path = window.location.pathname.toLowerCase();
     const activeMap = [
       { key: "hs-nav-home", match: "/index.html" },
@@ -319,13 +322,42 @@
       { key: "hs-nav-women", match: "/women.html" },
       { key: "hs-nav-sale", match: "/sale.html" },
     ];
+
     activeMap.forEach((item) => {
       if (path.endsWith(item.match)) {
         document.getElementById(item.key).classList.add("active");
       }
     });
 
-    document.getElementById("hs-login-link").href = links.login;
-    document.getElementById("hs-register-link").href = links.register;
+    // ===== AUTH UI =====
+    function updateAuthUI() {
+      const dropdown = document.getElementById("user-dropdown");
+      if (!dropdown) return;
+
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+
+      if (user) {
+        dropdown.innerHTML = `
+        <div style="padding:8px 10px;font-size:13px;color:#666;">
+          Chào, ${user.hoten || user.email}
+        </div>
+        <a href="#" id="logout-btn">Đăng xuất</a>
+      `;
+
+        document.getElementById("logout-btn").onclick = function (e) {
+          e.preventDefault();
+          localStorage.removeItem("currentUser");
+          location.reload();
+        };
+      } else {
+        dropdown.innerHTML = `
+        <a href="${links.login}">Đăng nhập</a>
+        <a href="${links.register}">Đăng ký</a>
+      `;
+      }
+    }
+
+    // 🔥 chạy sau khi render
+    setTimeout(updateAuthUI, 200);
   })();
 </script>
