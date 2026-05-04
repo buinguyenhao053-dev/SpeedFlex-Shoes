@@ -102,6 +102,11 @@
     </script>
 
     <script>
+      if (!localStorage.getItem("currentUser")) {
+        alert("Vui lòng đăng nhập để thanh toán.");
+        window.location.href = "login.html";
+      }
+      
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
       function renderOrder() {
@@ -177,27 +182,6 @@
       }
 
       document.addEventListener("DOMContentLoaded", renderOrder);
-      $(document).ready(function () {
-        // Kiểm tra trạng thái đăng nhập
-        let isLogin = localStorage.getItem("isLogin");
-        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-        if (isLogin === "true" && currentUser) {
-          $("#auth-links").html(`
-                    <span class="text-success me-2">Chào, ${currentUser.hoten}</span>
-                    <a href="#" id="btnLogout">Đăng xuất</a>
-                `);
-        }
-
-        // Xử lý đăng xuất
-        $(document).on("click", "#btnLogout", function (e) {
-          e.preventDefault();
-          localStorage.removeItem("isLogin");
-          localStorage.removeItem("currentUser");
-          alert("Đã đăng xuất!");
-          location.reload();
-        });
-      });
     </script>
   </body>
 </html>

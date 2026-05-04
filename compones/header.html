@@ -353,6 +353,7 @@
         document.getElementById("logout-btn").onclick = function (e) {
           e.preventDefault();
           localStorage.removeItem("currentUser");
+          localStorage.removeItem("isLogin");
           location.reload();
         };
       } else {
