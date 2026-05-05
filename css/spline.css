@@ -46,3 +46,144 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+#chatbox {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 340px;
+  height: 480px;
+  background: #fff;
+  border-radius: 16px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeInUp 0.3s ease;
+  z-index: 9999;
+}
+
+/* HEADER */
+.chat-header {
+  background: linear-gradient(135deg, #111, #333);
+  color: white;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bot-avatar {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  color: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.chat-status {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* BODY */
+.chat-body {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+/* MESSAGE */
+.bot-msg {
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  max-width: 75%;
+}
+
+.user-msg {
+  background: #111;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  max-width: 75%;
+  margin-left: auto;
+}
+
+/* QUICK */
+.quick-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.quick-btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quick-btn:hover {
+  background: #111;
+  color: white;
+}
+
+/* INPUT */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #eee;
+  padding: 8px;
+  gap: 6px;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  background: #f1f1f1;
+  outline: none;
+}
+
+#send-btn {
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
