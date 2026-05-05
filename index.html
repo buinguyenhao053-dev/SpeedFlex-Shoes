@@ -188,28 +188,26 @@
   </head>
 
   <body>
-    
-      <div id="shared-header"></div>
-      <script>
-        fetch("./compones/header.html")
-          .then((res) => res.text())
-          .then((html) => {
-            const host = document.getElementById("shared-header");
-            host.innerHTML = html;
+    <div id="shared-header"></div>
+    <script>
+      fetch("./compones/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-header");
+          host.innerHTML = html;
 
-            host.querySelectorAll("script").forEach((oldScript) => {
-              const newScript = document.createElement("script");
-              if (oldScript.src) {
-                newScript.src = oldScript.src;
-              } else {
-                newScript.textContent = oldScript.textContent;
-              }
-              document.body.appendChild(newScript);
-              oldScript.remove();
-            });
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+            oldScript.remove();
           });
-      </script>
-    
+        });
+    </script>
 
     <section class="hero-slider" id="heroSlider">
       <article class="hero-slide active">
@@ -335,25 +333,24 @@
       </div>
     </section>
 
-    
-      <div id="shared-footer"></div>
-      <script>
-        fetch("./compones/footer.html")
-          .then((res) => res.text())
-          .then((html) => {
-            const host = document.getElementById("shared-footer");
-            host.innerHTML = html;
+    <div id="shared-footer"></div>
+    <script>
+      fetch("./compones/footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const host = document.getElementById("shared-footer");
+          host.innerHTML = html;
 
-            host.querySelectorAll("script").forEach((oldScript) => {
-              const newScript = document.createElement("script");
-              if (oldScript.src) newScript.src = oldScript.src;
-              else newScript.textContent = oldScript.textContent;
-              document.body.appendChild(newScript);
-              oldScript.remove();
-            });
+          host.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) newScript.src = oldScript.src;
+            else newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+            oldScript.remove();
           });
-      </script>
-    
+        });
+    </script>
+
     <script type="module">
       import { menProducts, womenProducts } from "./js/products.js";
 
@@ -406,8 +403,5 @@
 
       setInterval(nextSlide, 4200);
     </script>
-    <!-- <canvas id="canvas3d"></canvas> -->
-
-    <script type="module" src="./js/spline.js"></script>
   </body>
 </html>
