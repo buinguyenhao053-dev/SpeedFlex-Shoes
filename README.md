@@ -3,7 +3,7 @@
 
 Website bán giày đơn giản được xây dựng bằng HTML, CSS, JavaScript.
 
-## 🚀 Chức năng
+## Chức năng
 
 - Đăng nhập / Đăng ký
 - Xem sản phẩm (Nam, Nữ, Sale)
@@ -11,20 +11,23 @@ Website bán giày đơn giản được xây dựng bằng HTML, CSS, JavaScrip
 - Giỏ hàng
 - Thanh toán
 
-## 🛠 Công nghệ sử dụng
+## Công nghệ sử dụng
 
 - HTML
 - CSS (Bootstrap)
 - JavaScript
 - jQuery
 
-## 📁 Cấu trúc project
+## Cấu trúc project
 
 - html/ : các trang web
 - css/ : file giao diện
 - js/ : xử lý logic
 - img/ : hình ảnh sản phẩm
 
-## 👨‍💻 Tác giả
+## Tác giả
 
 - Bùi Nguyên Hạo
+- Nguyễn Văn Trí
+- Võ Đình Nhàn
+- Trần Huy Hoàng
