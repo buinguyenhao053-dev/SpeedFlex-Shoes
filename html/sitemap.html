@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sitemap SpeedFlex Shoes</title>
+
+    <style>
+        :root {
+            --line-color: #7a8ea1;
+            --box-bg: #dfe6ee;
+            --text-color: #111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+            color: white;
+        }
+
+        .tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .box {
+            width: 140px;
+            padding: 15px 10px;
+            background: var(--box-bg);
+            color: var(--text-color);
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .box span {
+            display: block;
+            font-weight: normal;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .line-v {
+            width: 2px;
+            height: 40px;
+            background: var(--line-color);
+            position: relative;
+        }
+
+        .line-v::before,
+        .line-v::after {
+            content: '▲';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) scaleX(1.4);
+            font-size: 8px;
+            color: var(--line-color);
+        }
+
+        .line-v::before {
+            top: -5px;
+        }
+
+        .line-v::after {
+            bottom: -5px;
+            transform: translateX(-50%) scaleX(1.4) rotate(180deg);
+        }
+
+        .horizontal-line-top {
+            width: 960px;
+            height: 2px;
+            background: var(--line-color);
+        }
+
+        .menu-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 140px;
+            position: relative;
+        }
+
+        .stub {
+            width: 2px;
+            height: 20px;
+            background: var(--line-color);
+        }
+
+        .line-h {
+            position: absolute;
+            height: 2px;
+            background: var(--line-color);
+            top: 121px;
+            width: 90px;
+        }
+
+        .line-left {
+            right: 70px;
+        }
+
+        .line-right {
+            left: 70px;
+        }
+
+        .product-flow {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tree">
+        <h1>SITEMAP WEBSITE</h1>
+        <div class="box">
+            Trang chủ
+            <span>(index.html)</span>
+        </div>
+        <div class="line-v"></div>
+        <div class="horizontal-line-top"></div>
+        <div class="menu-container">
+            <div class="column">
+                <div class="line-v"></div>
+                <div class="box">
+                    Thương hiệu
+                    <span>(about.html)</span>
+                </div>
+            </div>
+            <div class="column">
+                <div class="line-v"></div>
+                <div class="box">
+                    Giày nam
+                    <span>(men.html)</span>
+                </div>
+                <div class="stub"></div>
+                <div class="line-h line-right"></div>
+            </div>
+            <div class="column">
+                <div class="line-v"></div>
+                <div class="box">
+                    Giày nữ
+                    <span>(women.html)</span>
+                </div>
+                <div class="stub"></div>
+                <div class="line-h line-left"></div>
+                <div class="line-h line-right"></div>
+                <div class="line-v" style="height: 50px;"></div>
+                <div class="product-flow">
+                    <div class="box">
+                        Chi tiết sản phẩm
+                        <span>(detail.html)</span>
+                    </div>
+                    <div class="line-v"></div>
+                    <div class="box">
+                        Giỏ hàng
+                        <span>(cart.html)</span>
+                    </div>
+                    <div class="line-v"></div>
+                    <div class="box">
+                        Thanh toán
+                        <span>(checkout.html)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="line-v"></div>
+                <div class="box">
+                    Sale
+                    <span>(sale.html)</span>
+                </div>
+                <div class="stub"></div>
+                <div class="line-h line-left"></div>
+            </div>
+            <div class="column">
+                <div class="line-v"></div>
+                <div class="box">
+                    Đăng nhập
+                    <span>(login.html)</span>
+                </div>
+                <div class="line-v"></div>
+                <div class="box">
+                    Quên mật khẩu
+                    <span>(forgot-password.html)</span>
+                </div>
+            </div>
+            <div class="column">
+                <div class="line-v"></div>
+                <div class="box">
+                    Đăng ký
+                    <span>(register.html)</span>
+                </div>
+            </div>
+            <div class="column">
+                <div class="line-v"></div>
+                <div class="box">
+                    Lịch sử mua
+                    <span>(history.html)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
